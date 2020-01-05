@@ -1,0 +1,23 @@
+.subStructure{
+    position: relative;
+    background: linear-gradient( rgba(0,0,0,0.5), rgba(0,0,0,0.7)),url('./Assets/spencer-davis-YEmsw57gYa8-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    overflow: hidden;
+    height: 100vh;
+    margin-bottom: 0;
+}
+.NavBar_Top{
+    z-index: 100;
+    width: 100vw;
+    overflow: hidden;
+}
+@media (min-width: 800px){
+    .subStructure{
+        background-size: cover;
+        background-position: top 20% right 75%;
+        height: 60rem;
+    }
+}

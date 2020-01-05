@@ -1,0 +1,36 @@
+.We__Are__Here{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    color: #000035;
+    margin: 2px auto;
+    text-align: center;
+}
+.To__Serve{
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #000035;
+    text-align: center;
+}
+.Section__Header{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    color: #212121;
+}
+.Contact__Value{
+    font-weight: lighter;
+}
+
+@media (min-width: 800px){
+    .We__Are__Here{
+        font-size: 72px;
+    }
+    .To__Serve{
+        font-size: 72px;
+    }
+}

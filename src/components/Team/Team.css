@@ -1,0 +1,64 @@
+.Team{
+    background: #000035;
+    height: 600px;
+}
+
+.Team__Header{
+    text-align: center;
+    color: #FBFBFB;
+    font-weight: 600;
+    font-size: 30px;
+}
+.Team__Mates{
+    margin: 20px 30px;
+}
+.Mate{
+    background-color: white;
+    max-width: 320px;
+    border-radius: 10px;
+    padding: 10px;
+}
+.Mate img{
+    max-height: 350px;
+    min-height: 350px;
+    min-width: 320px;
+    max-width: 320px;
+    margin-bottom: 0;
+    padding-top: 0;
+    border-radius: 10px;
+}
+.MateDetails{
+    background-color: white;
+    margin-top:20px;
+    width : 300px
+}
+.MateDetails p{
+    margin-top: 0;
+}
+.Mate__name{
+    font-weight: bold;
+    font-size: 20px;
+    color: #212121;
+    margin: 2px 4px;
+
+}
+.Mate__Position{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #212121;
+    margin: 0 4px;
+}
+.Socials{
+    color: #E30207;
+    display: flex;
+    justify-content: flex-end;
+    align-self: auto;
+}
+ion-icon{
+    margin: 2px 5px;
+    font-size: 25px;
+    margin-bottom: 15px;
+}

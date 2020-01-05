@@ -1,0 +1,54 @@
+.IntroLayer{
+    margin-top: 180px;
+    width: 100vw;
+    overflow: hidden;
+}
+.Welcome{
+    color: white;
+    font-weight: bold;
+    line-height: 40px;
+    font-size: 40px;
+    width: 100vw;
+    height: 10vh;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.what--we--do{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #FBFBFB;
+}
+
+.ButtonDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    margin-top: 2.5rem;
+    overflow: hidden;
+    width: 100vw;
+}
+.ButtonDiv a{
+    display:block;
+    color: white;
+    text-decoration: none;
+    padding: 1.2rem 0;
+    background: #E30207;
+    width: 10rem;
+    text-align: center;
+    border-radius: 5px;
+}
+.ButtonDiv a:hover{
+    color: #E30207;
+    background-color: white;
+}
+
+@media (min-width: 800px){
+    .Welcome{
+        font-size: 72px;
+    }
+}

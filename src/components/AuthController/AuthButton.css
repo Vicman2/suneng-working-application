@@ -1,0 +1,21 @@
+.AuthWrapper{
+    display: flex;
+    margin-right: 20px;
+}
+.AuthButton button{
+    margin: auto 3px;
+    margin-right: 10px;
+    border-radius: 5px;
+    outline: none;
+    background-color: #E30207;
+    color: white;
+    font-weight: bolder;
+    padding: 7px;
+    font-size: 15px;
+    border:none
+}
+.AuthButton button:hover{
+    background-color: white;
+    color: #E30207;
+    cursor: pointer;
+}

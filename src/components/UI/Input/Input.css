@@ -1,0 +1,16 @@
+Input{
+    width: 80%;
+    border-radius: 4px;
+    height: 2rem;
+}
+.Input__Element{
+    padding: 7px 10px;
+    margin: 20px auto;
+    outline: none;
+}
+.HideErrorMessage{
+    display: none;
+}
+.ShowErrorMessage{
+    color: red;
+}

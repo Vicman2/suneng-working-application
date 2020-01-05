@@ -1,0 +1,27 @@
+.inputWithIcon{
+    position: relative;
+    margin: auto;
+    padding: auto;
+}
+
+.inputWithIcon ion-icon{
+    padding-right: 4px;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color:  #000035;
+}
+
+.inputWithIcon input{
+    box-shadow: 0 0 8px 0 #aaa;
+    width: 90%;
+    margin: 8px 2px;
+    padding-left: 40px;
+    outline: none;
+    font-family: inherit;
+    border-radius: 10px;
+}
+
+.inputWithIcon input:focus{
+    box-shadow:0 0 8px 0 #000035;
+}

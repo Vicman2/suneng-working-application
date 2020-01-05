@@ -1,0 +1,42 @@
+.Services{
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0.5rem;
+    margin-bottom: 30px;
+}
+.Service__Header{
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 54px;
+    color: #212121;
+}
+
+.Services__List{
+    margin-left:25px;
+}
+.Number{
+    color: white;
+    background-color:  #E30207;
+    padding: 2px;
+    width: 20px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: lighter;
+}
+.Services__Image__Div{
+    width: 100vw;
+}
+.Services__Image__Div img{
+    width: 100%;
+}
+.weDo{
+    font-weight: lighter;
+}
+@media (min-width: 800px){
+    .Services{
+        flex-direction: row;
+        margin: 0.5rem 3rem;
+    }
+}

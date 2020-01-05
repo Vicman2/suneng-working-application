@@ -1,0 +1,48 @@
+.Contact{
+    margin: 10px 35px;
+}
+.Contact__Header{
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 54px;
+    color: #212121;
+} 
+.Contact__Wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.Form__Div{
+    width: 100%
+}
+.Btn__Div{
+    display: flex;
+    justify-content: flex-end;
+}
+.SubmitButton{
+    background: #E30207;
+    color: white;
+    outline: none;
+    border: none;
+    margin-right: 70px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+button:disabled{
+    background: rgb(247, 130, 132);
+    cursor: not-allowed;
+}
+
+@media (min-width: 800px){
+    .Contact__Wrapper{
+        flex-direction: row;
+    }
+    .Form__Div{
+        width: 40%
+    }
+}

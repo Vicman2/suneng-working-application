@@ -1,0 +1,16 @@
+.productRow{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 10px auto;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media (min-width:800px){
+    .productRow{
+        width: 100%;
+        flex-direction: row;
+    }
+   
+}
