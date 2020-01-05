@@ -10,7 +10,7 @@ const PreOrder = (props) => {
     const source = 'http://localhost:2020/api/machines/' + props.productToDisplay.machineSource
     const classes=["Pre__Order"]
     if(!props.preOrdered){
-        classes.push("Hide__PreOrder")
+        classes.push("Hide__PreOrder");
     }
     return (
         <Aux>
