@@ -3,10 +3,14 @@
   width: 100vw;
   overflow: hidden;
   box-sizing: border-box;
-  position: static;
   overflow-x: hidden;
+  min-height: 100;
 }
-
+.NavBar_Top{
+  z-index: 100;
+  width: 100vw;
+  overflow: hidden;
+}
 
 .App-header {
   background-color: #5a606d;

@@ -1,0 +1,24 @@
+.Order{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 3px 3px 3px #ccc;
+    padding: 10px;
+}
+.Order p{
+    box-shadow:  2px 2px 4px #ccc;
+    border : 10px;
+    padding: 15px 5px;
+    font-weight: bolder;
+}
+.status{
+    background-color: rgb(182, 182, 50);
+    color: white;
+}
+
+@media(min-width:800px){
+    .Order{
+        flex-direction: row;
+    }
+}

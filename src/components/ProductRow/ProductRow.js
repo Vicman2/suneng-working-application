@@ -10,7 +10,6 @@ const productRow = (props) => {
     const onOrder = (name) => {
         const product = props.products.find(elem => elem.name == name)
         props.setPreOrdered(product)
-        console.log(product)
     }
     const toDisplay = props.rowProduct.map(element => (
         <Product

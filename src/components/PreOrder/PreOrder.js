@@ -4,17 +4,21 @@ import  * as actionCreator from "../../Store/actions";
 import Aux from '../../hoc/Aux'
 import './PreOrder.css'
 import Backdrop from '../UI/Backdrop/Backdrop'
+import NotAuth from '../UI/NotAuthenticated/NotAuthenticated';
 
 
 const PreOrder = (props) => {
     const source = 'http://localhost:2020/api/machines/' + props.productToDisplay.machineSource
     const classes=["Pre__Order"]
-    if(!props.preOrdered){
+    const showNotAuthorizes = props.preOrdered && !props.loggedIn 
+    if(!props.preOrdered || !props.loggedIn){
         classes.push("Hide__PreOrder");
+    }else{
+        classes.push("Show__PreOrder")
     }
-    return (
+    let toRender = (
         <Aux>
-            <Backdrop toggled={props.preOrdered}/>
+            <Backdrop toggled={props.preOrdered && props.loggedIn}/>
             <div className={classes.join(" ")}>
                 <div className="Pre__Order__Content">
                     <p className="Machine__Title">{props.productToDisplay.name} </p>
@@ -28,14 +32,26 @@ const PreOrder = (props) => {
                         <button className="cancel__button" onClick={props.cancelOrder}>Cancel</button>
                         <button className="continue__button">Continue</button>
                     </div>
-                </div>
+                </div> 
             </div>
+        </Aux>
+    )
+    if(!props.loggedIn){
+        toRender = <Aux>
+            <Backdrop toggled={showNotAuthorizes}/>
+            <NotAuth show={showNotAuthorizes}/>
+        </Aux>
+    }
+    return (
+        <Aux>
+                {toRender}
         </Aux>
     )
 }
 
 const propsMappedToState = (state) => {
     return {
+        loggedIn: state.isLoggedIn,
         preOrdered : state.preOrdered,
         productToDisplay: state.orderedProduct
     }

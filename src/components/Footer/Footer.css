@@ -1,0 +1,19 @@
+.Footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto 25px;
+    margin-top: 30px;
+    height: 2.5rem;
+    bottom: 0;
+}
+.Fotter__Socials{
+    color:#E30207
+}
+
+@media(min-width: 800px){
+    .Footer{
+        flex-direction: row;
+    }
+}

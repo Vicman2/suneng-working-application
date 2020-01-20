@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter, withRouter} from 'react-router-dom'
 import {createStore, compose} from 'redux'
 import {Provider} from 'react-redux'
 

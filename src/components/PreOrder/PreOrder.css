@@ -35,6 +35,9 @@
     margin-top: 30px;
     justify-content: space-between;
 }
+.double__Button button:hover{
+    cursor: pointer;
+}
 .cancel__button{
     background: white;
     border: 1px solid red;
@@ -63,10 +66,15 @@
     margin: 30px 10px;
 }
 .Hide__PreOrder{
-    transform: translateY(-100%);
+    transform: translateX(-100%);
     opacity: 0;
+    transition: opacity 700ms, transform 700ms;
 }
-
+.Show__PreOrder{
+    transform: translateX(0);
+    opacity: 1;
+    transition: opacity 200ms, transform 400ms;
+}
 @media(min-width:800px){
     .Pre__Order__Content{
         width: 30%;

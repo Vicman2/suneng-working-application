@@ -5,7 +5,8 @@ const initialStore = {
     userData: {}, 
     products: null, 
     preOrdered: false,
-    orderedProduct:{}
+    orderedProduct:{},
+    page: "home"
 }
 
 
@@ -38,6 +39,11 @@ const reducer = (state = initialStore, action) => {
                 ...state, 
                 preOrdered:false,
                 orderedProduct:{}
+            }
+        case actionType.NAVIGATE:
+            return{
+                ...state,
+                page: action.page
             }
     }
     return state;

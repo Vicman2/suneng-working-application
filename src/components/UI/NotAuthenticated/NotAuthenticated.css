@@ -1,0 +1,48 @@
+.Not__Authenticated{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 205;
+}
+.Not__Authenticated div{
+    background-color: #f5f5f5;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 4px 4px 5px rgb(219, 211, 211);
+    margin: 10px;
+    padding: 10px;
+}
+.Not__Authenticated p{
+    text-align: center;
+    font-weight: bold;
+}
+.Not__Authenticated ion-icon{
+    color: red;
+    text-align: center;
+}
+.icon_Container{
+    display: flex;
+    justify-content: flex-end;
+}
+.Hide__Not__Authenticated{
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: opacity 700ms, transform 700ms;
+}
+.Show__Not__Authenticated{
+    transform: translateX(0);
+    opacity: 1;
+    transition: opacity 200ms, transform 400ms;
+}
+
+
+@media(min-width:800px){
+    .Not__Authenticated div{
+        width: auto;
+        height: auto
+    }
+}    

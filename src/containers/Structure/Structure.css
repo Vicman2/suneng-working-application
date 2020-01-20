@@ -9,11 +9,7 @@
     height: 100vh;
     margin-bottom: 0;
 }
-.NavBar_Top{
-    z-index: 100;
-    width: 100vw;
-    overflow: hidden;
-}
+
 @media (min-width: 800px){
     .subStructure{
         background-size: cover;

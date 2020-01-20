@@ -1,7 +1,11 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import Backdrop from '../../../components/UI/Backdrop/Backdrop'
 import Aux from '../../../hoc/Aux'
 import InputWithIcon from '../../../components/UI/InputWithIcon/InputWithIcon'
+import Spinner from '../../../components/UI/Spinner/Spinner'
+import Axios from '../../../Axios'
+import * as actionCreator from '../../../Store/actions'
 import './Login.css'
 
 
@@ -9,6 +13,11 @@ class Login extends Component{
     state = {
         isLoggedIn: false,
         isFormValid: false,
+        isSubmited : false,
+        serverError: false, 
+        loading: false,
+        removeFinally: false,
+        formErrorMessage: "Please fill in the form accurately before you submit",
         formInputs: {
             email: {
                 elemType: "input",
@@ -39,22 +48,62 @@ class Login extends Component{
                 value:"",
                 iconName:"key",
                 validation: function(){
-                    let valid = false;
-                    //Write the validation function here
+                    return true;
                 },
                 isValid: false,
-                errorMessage: "Add a strong passkey",
+                errorMessage: "",
                 touched: false
             }
         }
     }
-    formChangeHandler = (event, elemName) => {
+    formChangeHandler = async (event, elemName) => {
         let formInputs = {...this.state.formInputs}
         formInputs[elemName].value = event.target.value;
-        this.setState({formInputs: formInputs})
+        formInputs[elemName].isValid = formInputs[elemName].validation();
+        formInputs[elemName].touched = true
+        await this.setState({formInputs: formInputs})
+        await this.checkValidity()
     }
-
+    formSubmitHandler = async (event)=>{
+        event.preventDefault();
+        let data  = {}
+        await this.setState({isSubmited: true});
+        console.log(this.state.isFormValid)
+        if(this.state.isSubmited && this.state.isFormValid){
+            for(let key in this.state.formInputs){
+                const deKey= key;
+                data[deKey]= this.state.formInputs[deKey].value;
+            }
+            await this.setState({loading: true})
+            
+            Axios.post('/api/user/login', data)
+            .then(response => {
+                console.log(response)
+                this.setState({loading: false, serverError: false,removeFinally: true})
+                this.props.onLogin(response.data.details)
+            })
+            .catch(error => {
+                this.setState({loading: false})
+                if(error.response){
+                    this.setState({formErrorMessage: error.response.data.message, isFormValid:false})
+                }else{
+                    this.setState({formErrorMessage: "There was a server error, try later", isFormValid:false})
+                }
+            })
+        }
+    }
+    checkValidity = async()=>{
+        let  theFormIsValid = true;
+        for(let elemName in this.state.formInputs){
+            if(this.state.formInputs[elemName].isValid === false){
+                theFormIsValid = false;
+                break;
+            }
+        }
+        await this.setState({isFormValid: theFormIsValid})
+    }
     render(){
+       
         let formInputs = []
         for(let elemName in this.state.formInputs){
             formInputs.push({
@@ -63,15 +112,30 @@ class Login extends Component{
             })
         }
         let isClicked = this.props.showUp
+        if(this.state.removeFinally){
+            isClicked = false
+        }
         let classes = ["LoginWrapper"]
         if(isClicked){
             classes.push('showLogin')
         }else{
             classes.push('hidden')
         }
+        let subMitErrorClass = ["ErrorMessage"]
+        if(this.state.isSubmited && !this.state.isFormValid || this.state.serverError){
+            subMitErrorClass.push("Show__Error");
+        }else{
+            subMitErrorClass.push("Hide__Error")
+        }
+        let toDisplay =  (
+            <input type="submit" value="Submit"/>
+        )
+        if(this.state.loading){
+            toDisplay = <Spinner />
+        }
         return(
             <Aux>
-                <Backdrop toggled={this.props.showUp} clicked={this.props.clicked}/>
+                <Backdrop toggled={isClicked} clicked={this.props.clicked}/>
                 <div className={classes.join(" ")}>
                     <div className="Login">
                         <div className="CancelButton" onClick={this.props.clicked}>
@@ -79,18 +143,22 @@ class Login extends Component{
                         </div>
                         
                         <h1>Login to your account</h1>
-                        <form>
+                        <p className={subMitErrorClass.join(" ")}>{this.state.formErrorMessage} </p>
+                        <form onSubmit={this.formSubmitHandler}>
                             {formInputs.map(elem => (
-                                <InputWithIcon 
+                                <InputWithIcon
                                 key={elem.id}
                                 elemType={elem.config.elemType} 
                                 value={elem.config.value}
                                 config={elem.config.config}
                                 iconName={elem.config.iconName}
+                                touched={elem.config.touched}
+                                valid={elem.config.isValid}
+                                errorMessage={elem.config.errorMessage}
                                 changed={(event)=>this.formChangeHandler(event, elem.id)}/>)
                             )}
                             <div className="Submit__Wrapper">
-                                <input type="submit" value="Submit" />
+                                {toDisplay}
                             </div>
                         </form>
                     </div>
@@ -100,4 +168,10 @@ class Login extends Component{
     }
 }
 
-export default Login
+const mapDispatchToComponent = dispatch =>{
+    return {
+        onLogin: (payload) => dispatch(actionCreator.login(payload))
+    }
+}
+
+export default connect(null, mapDispatchToComponent)(Login)

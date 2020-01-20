@@ -3,8 +3,11 @@ export const GET_PRODUCTS = "GET_PRODUCTS"
 export const SET_PRE_ORDERED = "SET_PRE_ORDERED"
 export const SET_ORDERED_PRODUCT = 'SET_ORDERED_PRODUCT'
 export const CANCEL_PRE_ORDERD = 'CANCEL_PRE_ORDERED'
+export const NAVIGATE = 'NAVIGATE'
 
-
+export const navigatge = (page)=>{
+    return {type:NAVIGATE, page: page}
+}
 export const login = (payload)=>{
     return {type: LOGMEIN, payload:payload}
 }

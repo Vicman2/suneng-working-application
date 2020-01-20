@@ -5,6 +5,7 @@ import NavItems from './NavItems/NavItems'
 import AuthController from '../AuthController/AuthButton'
 import Harmburger from '../UI/Harmburger/Harmburger'
 import  './Navbar.css'
+import { withRouter } from 'react-router-dom';
 
 const navbar = (props) => {
     let Auth = null
@@ -34,4 +35,4 @@ const stateMappedToProps = (state) => {
         loggedIn : state.isLoggedIn
     }
 }
-export default connect(stateMappedToProps)(navbar)
+export default connect(stateMappedToProps)(withRouter(navbar))

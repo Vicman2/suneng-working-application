@@ -1,5 +1,6 @@
 .Contact{
     margin: 10px 35px;
+    margin-top: 85px
 }
 .Contact__Header{
     text-align: center;
@@ -27,10 +28,10 @@
     color: white;
     outline: none;
     border: none;
-    margin-right: 70px;
     padding: 10px 20px;
     font-size: 18px;
     border-radius: 5px;
+    width: 100%;
 }
 
 button:disabled{

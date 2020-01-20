@@ -1,3 +1,5 @@
+
+
 import React, {Component} from 'react'
 import ContactDetails from '../../components/ContactDetails/ContactDetails';
 import Input from '../../components/UI/Input/Input'
@@ -10,7 +12,7 @@ class Contact extends Component{
         isFormValid: false,
         formInputs: {
             name: {
-                elemType: "input", 
+                elemType: "input",
                 config: {
                     type: 'text', 
                     placeholder: "Name"
