@@ -9,6 +9,9 @@ import './Structure.css'
 
 
 class Structure extends Component{
+    goToFullProductHandler = ()=>{
+        this.props.history.push('/products')
+    }
     render(){
         return (
             <Aux>

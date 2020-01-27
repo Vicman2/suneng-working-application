@@ -109,6 +109,14 @@ class Contact extends Component{
         }
         this.setState({isFormValid: theFormIsValid})
     }
+    clearField = ()=> {
+        let validaity = {...this.state.formInputs}
+        for(let elem in validaity){
+            validaity[elem].value = ""
+        }
+        console.log(validaity)
+        this.setState({formInputs: validaity})
+    }
     submitFormHandler = (event) => {
         event.preventDefault()
         const data = {}
@@ -118,6 +126,8 @@ class Contact extends Component{
         }
         axios.post('/api/user/contact', data)
         .then(response => {
+            this.clearField()
+            console.log(this.state.formInputs)
             console.log(response)
         })
         .catch(err=> {
