@@ -24,7 +24,9 @@ class Orders extends Component{
             this.setState({orders: response.data.data})
         })
         .catch(err => {
-            console.log(err)
+            if(err.response.status == 404){
+                this.setState({orders: {}})
+            }
         })
     }
 
