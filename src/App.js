@@ -65,6 +65,7 @@ clickedSigninHandler =()=> {
         <section className="Structure">
           <NavBarMin 
           toggled={this.state.toggled}
+          toggler={this.navigationToggler}
           />
           <Backdrop toggled={this.state.toggled} clicked={this.navigationToggler}/>
           <Login 

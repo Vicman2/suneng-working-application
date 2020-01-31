@@ -52,6 +52,7 @@
     font-weight: bold;
     margin: 2px 1.5rem;
 }
+
 @media (min-width: 800px){
     .NavBarMin{
         display: none;

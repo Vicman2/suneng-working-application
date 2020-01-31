@@ -15,12 +15,12 @@ const droplet = (props) => {
         <div className={classes.join(" ")}>
             <div className="LogoMe">LOGO</div>
             <nav className="NavBarItems">
-                <div><NavLink activeClassName="active" to="/"> Home </NavLink></div>
-                <div><NavLink activeClassName="active" to="/products"> Products</NavLink></div>
-                <div><NavLink activeClassName="active" to="/services"> Services </NavLink></div>
-                <div><NavLink activeClassName="active" to="/about"> About </NavLink></div>
-                <div><NavLink activeClassName="active" to="/contact"> Contact Us</NavLink></div>
-                <div><NavLink activeClassName="active" to="/orders"> Orders</NavLink></div>
+                <div><NavLink onClick ={props.toggler} className ="minNavv" activeClassName="active" exact to="/"> Home </NavLink></div>
+                <div><NavLink onClick ={props.toggler} className ="minNavv" activeClassName="active" exact to="/products"> Products</NavLink></div>
+                <div><NavLink onClick ={props.toggler} className ="minNavv" activeClassName="active" exact to="/services"> Services </NavLink></div>
+                <div><NavLink onClick ={props.toggler} className ="minNavv" activeClassName="active" exact to="/aboutUs"> About </NavLink></div>
+                <div><NavLink onClick ={props.toggler} className ="minNavv" activeClassName="active" exact to="/contact"> Contact Us</NavLink></div>
+                <div><NavLink onClick ={props.toggler} className ="minNavv" activeClassName="active" exact to="/orders"> Orders</NavLink></div>
             </nav>
         </div>
     )
