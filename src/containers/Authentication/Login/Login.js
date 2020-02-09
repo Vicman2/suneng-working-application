@@ -78,12 +78,13 @@ class Login extends Component{
             
             Axios.post('/api/user/login', data)
             .then(response => {
-                console.log(response)
                 this.setState({loading: false, serverError: false,removeFinally: true})
                 this.props.onLogin(response.data.details)
+                localStorage.setItem('sunengUserData', JSON.stringify(response.data.details))
             })
             .catch(error => {
                 this.setState({loading: false})
+                console.log(error.response)
                 if(error.response){
                     this.setState({formErrorMessage: error.response.data.message, isFormValid:false})
                 }else{
@@ -103,7 +104,6 @@ class Login extends Component{
         await this.setState({isFormValid: theFormIsValid})
     }
     render(){
-       
         let formInputs = []
         for(let elemName in this.state.formInputs){
             formInputs.push({

@@ -17,16 +17,23 @@ import Aux from './hoc/Aux';
 import Services from './components/Services/Services';
 import Team from './components/Team/Team';
 import Contact from './containers/Contact/Contact';
+import Admin from './containers/Admin/Admin';
+import Profile from './components/Profile/Profile';
 
 class App extends Component{
   state={
-    // isTop: true, 
     toggled: false,
     clickedLogin: false,
     clickedSignin:false,
+    showProfile:false
 }
 componentDidMount(){
     window.addEventListener('scroll', this.handleNavbar);
+    let authe = JSON.parse(localStorage.getItem('sunengUserData'))
+    if(authe){
+      this.props.onLogin(authe)
+      console.log(localStorage)
+    }
     axios.get('api/product/allProducts')
     .then(response => {
         this.props.getMyProducts(response.data.data.data)
@@ -59,7 +66,14 @@ clickedSigninHandler =()=> {
         return {clickedSignin: !prev.clickedSignin}
     })
 }
+showProfileHandler = ()=> {
+  this.setState({showProfile: true})
+}
+cancelProfileHandler = ()=> {
+  this.setState({showProfile: false})
+}
   render(){
+    console.log(this.state.toggled)
     return (
       <Aux>
         <section className="Structure">
@@ -74,12 +88,16 @@ clickedSigninHandler =()=> {
           <SignIn 
           showUp ={this.state.clickedSignin}
           clicked= {this.clickedSigninHandler}/>
+          <Profile 
+          isToggled={this.state.showProfile}
+          removeProfile={this.cancelProfileHandler}/>
           <section className="NavBar_Top">
             <Navbar
             toToggle={this.navigationToggler}
             isTop={this.state.isTop}
             loginClicked={this.clickedLoginHandler}
-            signinClicked={this.clickedSigninHandler}/>
+            signinClicked={this.clickedSigninHandler}
+            showProfile={this.showProfileHandler}/>
           </section>
         </section>
       <Switch>
@@ -88,6 +106,7 @@ clickedSigninHandler =()=> {
         <Route path="/services" component={Services} />
         <Route path="/aboutUs" component={Team}/>
         <Route path="/contact" component={Contact}/>
+        <Route path="/admin" component={Admin} />
         <Route path="/" exact component={Structure} />
       </Switch>
       <Footer />
@@ -103,7 +122,8 @@ const propsMappedToState = (state)=> {
 }
 const mapDispachedtoComponent = dispatch => {
   return {
-      getMyProducts : (payload) => dispatch(actionCreator.companyProduct(payload)) 
+      getMyProducts : (payload) => dispatch(actionCreator.companyProduct(payload)),
+      onLogin: (payload) => dispatch(actionCreator.login(payload))
   }
 }
 export default connect(propsMappedToState, mapDispachedtoComponent)(App)

@@ -11,7 +11,7 @@ const navbar = (props) => {
     let Auth = null
     if(props.loggedIn){
         Auth = <div className="profilePicture">
-                <ion-icon name="person"></ion-icon>
+                <ion-icon onClick={props.showProfile} name="person"></ion-icon>
             </div>
     }else{
         Auth = <AuthController 

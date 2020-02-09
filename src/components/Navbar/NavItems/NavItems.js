@@ -1,9 +1,14 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 import NavItem from './NavItem/NavItem'
 import './NavItems.css'
 
 const NavItems = (props) => {
+    let admini = null
+    if(props.role === "admin"){
+        admini = <NavItem name="Admin" exact url="/admin" />
+    }
     return (
         <ul className="NavItems">
             <NavItem name="Home" url="/" exact/>
@@ -12,8 +17,15 @@ const NavItems = (props) => {
             <NavItem name="About Us" exact url="/aboutUs" />
             <NavItem name="Contact" exact url="/contact" />
             <NavItem name="Orders" url="/orders" />
+            {admini}
         </ul>
     )
 }
 
-export default withRouter(NavItems);
+const propsMappedToProps = (state) => {
+    return{
+        role : state.userData.role
+    }
+}
+
+export default connect(propsMappedToProps)(withRouter(NavItems));

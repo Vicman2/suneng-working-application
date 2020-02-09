@@ -137,6 +137,7 @@ class SignIn extends Component{
                 console.log(response)
                 this.setState({loading: false, serverError: false,removeFinally: true})
                 this.props.onLogin(response.data.details)
+                localStorage.setItem('sunengUserData', JSON.stringify(response.data.details))
             })
             .catch(error => {
                 this.setState({loading: false})
@@ -144,7 +145,6 @@ class SignIn extends Component{
                     this.setState({invalidFormErrorMessage: error.response.data.message, isFormValid:false})
                 }else{
                     this.setState({invalidFormErrorMessage: "There was a server error, try later", isFormValid:false})
-
                 }
             })
         }

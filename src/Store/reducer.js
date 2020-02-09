@@ -2,7 +2,7 @@ import * as actionType from './actions'
 
 const initialStore = {
     isLoggedIn: false, 
-    userData: {}, 
+    userData: {},
     products: null, 
     preOrdered: false,
     orderedProduct:{},
@@ -36,7 +36,7 @@ const reducer = (state = initialStore, action) => {
             }
         case actionType.CANCEL_PRE_ORDERD:
             return{
-                ...state, 
+                ...state,
                 preOrdered:false,
                 orderedProduct:{}
             }

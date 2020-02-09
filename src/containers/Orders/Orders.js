@@ -20,12 +20,11 @@ class Orders extends Component{
             }
         })
         .then(response => {
-            console.log(response)
             this.setState({orders: response.data.data})
         })
         .catch(err => {
-            if(err.response.status == 404){
-                this.setState({orders: {}})
+            if(err.response.status === 404){
+                this.setState({orders: []})
             }
         })
     }
@@ -34,13 +33,12 @@ class Orders extends Component{
         this.props.history.push("/")
     }
     render(){
-        console.log(this.props)
         let toShow = <Spinner />
         if(!this.props.token){
             toShow= <NotAuthenticated cancelPage={this.cancelOrderPage} show/>
         }
 
-        if(this.state.orders){
+        if(this.state.orders && this.state.orders.length>=3 ){
             toShow = this.state.orders.map(oneOrder=> (
                 <Order
                 key={oneOrder._id}
@@ -50,6 +48,10 @@ class Orders extends Component{
                 date = {oneOrder.orderDate.toString()}
                 />
             ))
+        }else if(this.state.orders &&  this.state.orders.length === 0){
+            toShow = (
+                <p className="noOrder">You dont have an order yet !!!</p>
+            )
         }
         return (
             <Aux>
