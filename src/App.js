@@ -72,8 +72,12 @@ showProfileHandler = ()=> {
 cancelProfileHandler = ()=> {
   this.setState({showProfile: false})
 }
+logoutHandler = () => {
+  this.props.onLogOut();
+  localStorage.removeItem("sunengUserData");
+}
   render(){
-    console.log(this.state.toggled)
+    console.log(this.props)
     return (
       <Aux>
         <section className="Structure">
@@ -90,7 +94,8 @@ cancelProfileHandler = ()=> {
           clicked= {this.clickedSigninHandler}/>
           <Profile 
           isToggled={this.state.showProfile}
-          removeProfile={this.cancelProfileHandler}/>
+          removeProfile={this.cancelProfileHandler}
+          logout={this.logoutHandler}/>
           <section className="NavBar_Top">
             <Navbar
             toToggle={this.navigationToggler}
@@ -123,7 +128,8 @@ const propsMappedToState = (state)=> {
 const mapDispachedtoComponent = dispatch => {
   return {
       getMyProducts : (payload) => dispatch(actionCreator.companyProduct(payload)),
-      onLogin: (payload) => dispatch(actionCreator.login(payload))
+      onLogin: (payload) => dispatch(actionCreator.login(payload)), 
+      onLogOut: ()=> dispatch(actionCreator.logOut())
   }
 }
 export default connect(propsMappedToState, mapDispachedtoComponent)(App)

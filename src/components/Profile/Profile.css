@@ -5,7 +5,7 @@
     top:0;
     height: 100%;
     background-color: #f5f5f5;
-    z-index: 203;
+    z-index: 202;
 }
 .Profile__Top{
     display: flex;
@@ -45,12 +45,12 @@
 }
 .hide__Profile{
     opacity: 0;
-    transform: translatex(-100%);
+    transform: translatey(-100%);
     transition: opacity 200ms, transform 500ms;
  }
 
 .show__Profile{
     opacity: 1;
-    transform: translatex(0);
+    transform: translatey(0);
     transition: opacity 200ms, transform 500ms;
 }

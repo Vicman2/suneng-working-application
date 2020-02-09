@@ -6,6 +6,7 @@ export const CANCEL_PRE_ORDERD = 'CANCEL_PRE_ORDERED'
 export const CONTINUE_PRE_ORDER = 'CONTINUE_PRE_ORDER'
 export const FINISHED_PRE_ORDER = 'FINSIHED_PRE_ORDER'
 export const NAVIGATE = 'NAVIGATE'
+export const LOGOUT = 'LOGOUT'
 
 export const navigatge = (page)=>{
     return {type:NAVIGATE, page: page}
@@ -27,10 +28,13 @@ export const setPreOrdered = (payload)=> {
 export const cancelPreOrder = ()=> {
     return {type: CANCEL_PRE_ORDERD}
 }
-
 export const continuePreOrder = ()=> {
     return {type: CONTINUE_PRE_ORDER}
 }
 export const finishedPreOrder = ()=> {
     return {type: FINISHED_PRE_ORDER}
+}
+
+export const logOut = () => {
+    return {type: LOGOUT}
 }

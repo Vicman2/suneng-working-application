@@ -52,6 +52,12 @@ const reducer = (state = initialStore, action) => {
                 orderedProduct:{},
                 finishedOrder:false
             }
+        case actionType.LOGOUT:
+            return{
+                ...state, 
+                userData:{}, 
+                isLoggedIn: false
+            }
     }
     return state;
 }
