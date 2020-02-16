@@ -75,9 +75,9 @@ cancelProfileHandler = ()=> {
 logoutHandler = () => {
   this.props.onLogOut();
   localStorage.removeItem("sunengUserData");
+  this.setState({clickedLogin: false, showProfile: false, clickedSignin: false})
 }
   render(){
-    console.log(this.props)
     return (
       <Aux>
         <section className="Structure">

@@ -41,7 +41,7 @@ const Profile = (props) => {
 const propsMappedToProps = (state) => {
     return {
         userData : state.userData, 
-        isLoggedIn: state.isLoggedIn
+        isLoggedIn: state.isLoggedIn,
     }
 }
 
