@@ -54,3 +54,9 @@
     transform: translatey(0);
     transition: opacity 200ms, transform 500ms;
 }
+
+@media(min-width:800px){
+    .Profile{
+        width: 30%;
+    }
+}

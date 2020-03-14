@@ -54,16 +54,16 @@ navigationToggler = () => {
     this.setState({toggled: !toggledState})
 }
 clickedLoginHandler = ()=>{
-    this.setState((prev,props)=> {
-        return {clickedLogin: !prev.clickedLogin}
-    })
+  this.setState((prev,props) => {
+    return {clickedLogin: !prev.clickedLogin}
+  })
 }
 goToFullProductHandler = ()=>{
     this.props.history.push('/products')
 }
 clickedSigninHandler =()=> {
-    this.setState((prev, props) => {
-        return {clickedSignin: !prev.clickedSignin}
+    this.setState((prev,props) => {
+      return {clickedSignin: !prev.clickedSignin}
     })
 }
 showProfileHandler = ()=> {
@@ -78,6 +78,7 @@ logoutHandler = () => {
   this.setState({clickedLogin: false, showProfile: false, clickedSignin: false})
 }
   render(){
+    console.log(this.state)
     return (
       <Aux>
         <section className="Structure">

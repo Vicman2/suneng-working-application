@@ -23,7 +23,7 @@ class Login extends Component{
                 elemType: "input",
                 config: {
                     type: 'text', 
-                    placeholder: "Email"
+                    placeholder: "Email" 
                 },
                 iconName: "mail",
                 value:"",

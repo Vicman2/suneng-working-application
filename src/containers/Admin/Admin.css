@@ -1,3 +1,57 @@
 .Admin {
-    
+    height: 100%;
+}
+.Admin_Header{
+    margin-top: 80px;
+    text-align: center;
+    color:  #212121;
+    letter-spacing: 2px;
+}
+.Admin_Area{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+.De_Components{
+    background-color: #000035;
+    color: #f5f5f5;
+    font-size: bolder;
+    padding: 40px;
+    height: 60vh;
+    border-radius: 40px;
+}
+.De_Components section{
+    margin: 25px 0;
+}
+
+.De_Components section>p{
+    border: 1px inset rgb(138, 43, 226);
+    text-align: center;
+    border-radius: 30px;
+    padding: 5px 10px;
+}
+.De_Components section>p:hover{
+    color: #000035;
+    background-color: rgb(138, 43, 226);
+    cursor: pointer;
+}
+.Details{
+    width: 70%;
+    background-color: rgba(241, 234, 234, 0.664);
+    border-radius: 20px;
+    border: 3px outset rgba(230, 230, 250, 0.911);
+    padding: 10px 10px;
+}
+.Detail_User_Data_Header{
+    text-align: center;
+    font-weight: bolder;
+    letter-spacing: 2px;
+}
+.Operations button{
+    background-color:#000035 ;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    padding: 15px;
 }
