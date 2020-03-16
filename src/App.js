@@ -32,7 +32,6 @@ componentDidMount(){
     let authe = JSON.parse(localStorage.getItem('sunengUserData'))
     if(authe){
       this.props.onLogin(authe)
-      console.log(localStorage)
     }
     axios.get('api/product/allProducts')
     .then(response => {

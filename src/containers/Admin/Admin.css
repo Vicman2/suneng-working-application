@@ -16,7 +16,7 @@
     background-color: #000035;
     color: #f5f5f5;
     font-size: bolder;
-    padding: 40px;
+    padding: 20px;
     height: 60vh;
     border-radius: 40px;
 }
@@ -36,11 +36,13 @@
     cursor: pointer;
 }
 .Details{
-    width: 70%;
+    width: 84%;
     background-color: rgba(241, 234, 234, 0.664);
     border-radius: 20px;
     border: 3px outset rgba(230, 230, 250, 0.911);
     padding: 10px 10px;
+    overflow-y: scroll;
+    height: 60vh;
 }
 .Detail_User_Data_Header{
     text-align: center;
@@ -48,10 +50,49 @@
     letter-spacing: 2px;
 }
 .Operations button{
-    background-color:#000035 ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#000035;
     color: white;
     outline: none;
     border: none;
-    border-radius: 20px;
-    padding: 15px;
+    border-radius: 5px;
+    padding: 1px 5px;
+}
+.Operations button>ion-icon{
+    margin: 0;
+}
+.Operations button:hover{
+    background-color: rgb(245, 239, 239);
+    color: #000035;
+    border: 1px solid #000035;
+    cursor: pointer;
+}
+.actions{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(223, 219, 219);
+    text-align: center;
+    padding: 0 5px;
+    margin: 5px 0;
+    height: 45px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.User_Id{
+    width:20%
+}
+.User_Name{
+    width: 25%;
+}
+.User_Email{
+    width: 35%;
+}
+.User_Role{
+    width: 5%;
+}
+.sub_Operations{
+    width: 15%;
 }
