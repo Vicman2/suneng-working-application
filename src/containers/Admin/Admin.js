@@ -3,14 +3,15 @@ import {connect} from 'react-redux'
 import './Admin.css'
 import Aux from '../../hoc/Aux'
 import Axios from '../../Axios'
+import Spinner from '../../components/UI/Spinner/Spinner'
 import User from '../../components/User/User'
 
 class Admin extends Component{
     state = {
-        users: []
+        users: [],
+        deleteItem : false
     }
-    componentDidMount(){
-        console.log(this.props.token)
+    getUsers = ()=>{
         Axios.get('/api/user/get-users', {
             headers: {
                 'x-access-token': this.props.token
@@ -22,16 +23,35 @@ class Admin extends Component{
             console.log(error.response)
         })
     }
+    componentDidMount(){
+        this.getUsers();
+    }
+    deleteUserHandler(userId){
+        this.setState({deleteItem: true})
+        Axios.delete("/api/user/delete-user/"+userId, {
+            headers: {
+                'x-access-token': this.props.token
+            }
+        })
+        .then(response => {
+            this.getUsers();
+            this.setState({deleteItem: false})
+        })
+    }
     render(){
-        const theUsers = this.state.users.map(element => (
+        let toShow = this.state.users.map(element => (
             <User 
             key={element._id}
             id={element._id}
             name={element.name}
             email={element.email}
             role={element.role}
+            deleteUser ={() =>this.deleteUserHandler(element._id)}
             />
         ))
+        if(this.state.deleteItem){
+            toShow = <Spinner />
+        }
         return(
             <Aux>
                 <div className="Admin">
@@ -62,7 +82,7 @@ class Admin extends Component{
                                     <p className="sub_Operations"> Operations</p>
                                 </section>
                                 <section className="AllUser_Details">
-                                    {theUsers}
+                                    {toShow}
                                 </section>
                             </div>
                         </div>
