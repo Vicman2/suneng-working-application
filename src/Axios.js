@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'https://suneng-backend.herokuapp.com/'
+    baseURL: 'http://localhost:2020/'
 })
 
 export default instance

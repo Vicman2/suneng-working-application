@@ -38,6 +38,20 @@ const inputWithIcon = (props) => {
             </Aux>
         )
         break;
+        case('select'):
+        inputElement = (
+            <Aux>
+                <select 
+                    className="Input__Element"  
+                    onChange={props.changed} 
+                    value={props.value}>
+                    {props.config.options.map(option => (
+                        <option key={option.value} value={option.value}>{option.displayValue}</option>
+                    ))}
+                </select>
+            </Aux>
+        )
+        break;
         default: 
         inputElement = (
             <Aux>

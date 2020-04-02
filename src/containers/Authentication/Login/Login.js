@@ -16,7 +16,6 @@ class Login extends Component{
         isSubmited : false,
         serverError: false, 
         loading: false,
-        removeFinally: false,
         formErrorMessage: "Please fill in the form accurately before you submit",
         formInputs: {
             email: {
@@ -78,8 +77,10 @@ class Login extends Component{
             
             Axios.post('/api/user/login', data)
             .then(response => {
-                this.setState({loading: false, serverError: false,removeFinally: true})
+                this.setState({loading: false, serverError: false})
                 this.props.onLogin(response.data.details)
+                this.props.clicked();
+                this.clearFields()
                 localStorage.setItem('sunengUserData', JSON.stringify(response.data.details))
             })
             .catch(error => {
@@ -103,6 +104,13 @@ class Login extends Component{
         }
         await this.setState({isFormValid: theFormIsValid})
     }
+    clearFields = ()=>{
+        const initialField = {...this.state.formInputs}
+        for(let elemName in initialField){
+            initialField[elemName].value = '';
+        }
+        this.setState({formInputs: initialField})
+    }
     render(){
         let formInputs = []
         for(let elemName in this.state.formInputs){
@@ -112,9 +120,6 @@ class Login extends Component{
             })
         }
         let isClicked = this.props.showUp
-        if(this.state.removeFinally){
-            isClicked = false
-        }
         let classes = ["LoginWrapper"]
         if(isClicked){
             classes.push('showLogin')

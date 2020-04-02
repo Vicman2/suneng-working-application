@@ -1,0 +1,40 @@
+.EditProduct{
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    width: 30%;
+}
+.ShowEditProduct{
+    margin: auto;
+    width: 30%;
+    height: 80%;
+    z-index: 204;
+    position: fixed;
+    top:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    opacity: 1;
+    transform: translateY(0) !important;
+    transition: opacity 200ms, transform 500ms;
+}
+.EditProductFormWrapper{
+    margin: auto;
+    width: 100%;
+    height: 80%;
+    z-index: 204;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.hideUserEditForm{
+    opacity: 0;
+    transform: translateY(200%);
+    transition: opacity 200s, transform 500ms;
+}

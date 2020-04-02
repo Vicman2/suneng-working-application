@@ -77,7 +77,6 @@ logoutHandler = () => {
   this.setState({clickedLogin: false, showProfile: false, clickedSignin: false})
 }
   render(){
-    console.log(this.state)
     return (
       <Aux>
         <section className="Structure">

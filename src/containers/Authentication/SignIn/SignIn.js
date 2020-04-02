@@ -14,8 +14,7 @@ class SignIn extends Component{
     state = {
         isFormValid: false,
         isSubmited: false,
-        loading: false, 
-        removeFinally: false,
+        loading: false,
         serverError: false,
         invalidFormErrorMessage:"Please, fill the forms accurately before you submit",
         formInputs: {
@@ -122,6 +121,15 @@ class SignIn extends Component{
         theFormIsValid = this.state.verifyPassword.isValid && theFormIsValid ? true: false
         await this.setState({isFormValid: theFormIsValid})
     }
+    clearFields = ()=>{
+        const initialField = {...this.state.formInputs}
+        for(let elemName in initialField){
+            initialField[elemName].value = '';
+        }
+        const verifyPassword = {...this.state.verifyPassword}
+        verifyPassword.value = ''
+        this.setState({formInputs: initialField, verifyPassword: verifyPassword})
+    }
     formSubmitHandler = async (event)=>{
         let data  = {}
         event.preventDefault();
@@ -134,9 +142,10 @@ class SignIn extends Component{
             await this.setState({loading: true})
             Axios.post('/api/user/signup', data)
             .then(response => {
-                console.log(response)
-                this.setState({loading: false, serverError: false,removeFinally: true})
+                this.setState({loading: false, serverError: false})
+                this.props.clicked()
                 this.props.onLogin(response.data.details)
+                this.clearFields()
                 localStorage.setItem('sunengUserData', JSON.stringify(response.data.details))
             })
             .catch(error => {
