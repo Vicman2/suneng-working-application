@@ -6,10 +6,12 @@ import { connect } from 'react-redux'
 import Spinner from '../../../components/UI/Spinner/Spinner'
 import ProductList from '../../../components/ProductList/ProductList'
 import AddProduct from './AddProduct/AddProduct'
+import DeleteProduct from './DeleteProduct/DeleteProduct'
 
 class Products extends Component{
     state = {
         productsFetched : [],
+        productToDelete: null,
         deleteItem: false, 
         addProduct: false,
     }
@@ -23,18 +25,13 @@ class Products extends Component{
             this.setState({productsFetched: response.data.data.data})
         })
     }
-    deleteProduct = (productId)=> {
-        console.log(" I am working")
-        this.setState({deleteItem:true})
-        Axios.delete('/api/product/delete-product/' + productId, {
-            headers: {
-                'x-access-token': this.props.token
-            }
-        })
-        .then(response => {
-            this.setState({ deleteItem: false})
-            this.getProducts()
-        })
+    deleteProductHandler = (productId)=> {
+        const prodDetail = this.state.productsFetched.find(prod => prod._id == productId);
+        this.setState({deleteItem:true, productToDelete: prodDetail})
+    }
+    cancelDeleteProduct = ()=>{
+        this.setState({deleteItem:false})
+        this.getProducts()
     }
     componentDidMount(){
         this.getProducts()
@@ -55,7 +52,7 @@ class Products extends Component{
                 name={product.name}
                 details={product.details}
                 source={product.machineSource}
-                deleteProduct={()=>this.deleteProduct(product._id)}
+                deleteProduct={()=>this.deleteProductHandler(product._id)}
                 />
             ))
         }
@@ -68,6 +65,12 @@ class Products extends Component{
                 getProduct={this.getProducts}
                 clicked={this.addProductHandler}
                 showUp={this.state.addProduct}
+                />
+                <DeleteProduct 
+                prodDetails={this.state.productToDelete}
+                isClicked={this.state.deleteItem}
+                cancel={this.cancelDeleteProduct}
+
                 />
                 <div className="Products">
                     <div className="Product_Title_Div">
