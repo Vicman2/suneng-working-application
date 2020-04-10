@@ -40,12 +40,10 @@ class Admin extends Component{
                             </div>
                         </div>
                 </div>
-
             </Aux>
         )
     }
 }
-
 const propsMappedToState = (state)=> {
     return{
         token : state.userData.token

@@ -1,0 +1,21 @@
+.Products{
+    margin: auto;
+}
+.Product_Title_Div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.Product_Name{
+    width: 25%;
+}
+.Product_Details{
+    width: 30%;
+}
+.Product_Image{
+    width: 25%;
+}
+.sub_Operations{
+    width: 10%;
+}

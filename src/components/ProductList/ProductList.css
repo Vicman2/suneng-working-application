@@ -1,0 +1,22 @@
+.ProductList{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    border-bottom: 1px solid rgb(216, 212, 212);
+}
+
+.Operation_Icons{
+    display: flex;
+    justify-content: center;
+}
+
+.Product_Image img{
+    width: 50%;
+    height: 60px;
+}
+.trash-icon>ion-icon{
+    color:rgb(241, 4, 4)
+}
+.edit-icon>ion-icon{
+    color:#000035
+}

@@ -13,7 +13,7 @@ class Orders extends Component{
     state = {
         orders: null
     }
-    componentDidMount(){
+    getOrders = ()=>{
         Axios.get('/api/order/get-order', {
             headers: {
                 'x-access-token': this.props.token
@@ -23,10 +23,19 @@ class Orders extends Component{
             this.setState({orders: response.data.data})
         })
         .catch(err => {
+            console.log(err.response)
             if(err.response.status === 404){
                 this.setState({orders: []})
             }
         })
+    }
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.token !== this.props.token){
+            this.getOrders()
+        }
+    }
+    componentDidMount(){
+        this.getOrders()
     }
 
     cancelOrderPage = ()=> {

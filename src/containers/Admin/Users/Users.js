@@ -6,13 +6,17 @@ import User from '../../../components/User/User'
 import './Users.css'
 import { connect } from 'react-redux'
 import EditForm from './EditForm/EditForm'
+import AddForm from './AddForm/AddForm'
+import DeleteUser from './DeleteUser/DeleteUser'
 
 class Users extends Component{
     state = {
         users: [],
+        userToDelete: null,
         deleteItem : false,
         userToEdit: null,
-        editUser : false
+        editUser : false, 
+        addUser: false
     }
     getUsers = ()=>{
         Axios.get('/api/user/get-users', {
@@ -29,17 +33,9 @@ class Users extends Component{
     componentDidMount(){
         this.getUsers();
     }
-    deleteUserHandler=(userId)=>{
-        this.setState({deleteItem: true})
-        Axios.delete("/api/user/delete-user/"+userId, {
-            headers: {
-                'x-access-token': this.props.token
-            }
-        })
-        .then(response => {
-            this.getUsers();
-            this.setState({deleteItem: false})
-        })
+    deleteUser=(userId)=>{
+        
+        
     }
     editUserHandler = async (userId)=>{
         const userDetail = this.state.users.find(user => user._id == userId);
@@ -49,6 +45,21 @@ class Users extends Component{
     }
     cancelUserEdit = ()=> {
         this.setState({editUser: false})
+        this.getUsers()
+    }
+    addUserHandler = async()=>{
+        await this.setState((prev, props) => {
+            return {addUser: !prev.addUser}
+        })
+    }
+    deleteUserHandler= async(userId)=>{
+        const userDetail = this.state.users.find(user => user._id == userId);
+        await this.setState((prev, props)=>{
+            return {deleteItem: true, userToDelete:userDetail}
+        })
+    }
+    cancelDeleteUser = ()=>{
+        this.setState({deleteItem:false})
         this.getUsers()
     }
     render(){
@@ -63,20 +74,27 @@ class Users extends Component{
             editUser = {()=> this.editUserHandler(element._id)}
             />
         ))
-        if(this.state.deleteItem){
-            toShow = <Spinner />
-        }
         return (
             <Aux>
                 <EditForm 
                 isClicked={this.state.editUser} 
                 userDetails={this.state.userToEdit} 
                 cancel={this.cancelUserEdit}/>
+                <AddForm 
+                clicked={this.addUserHandler}
+                getUsers={this.getUsers}
+                showUp={this.state.addUser}
+                />
+                <DeleteUser
+                isClicked={this.state.deleteItem}
+                cancel={this.cancelDeleteUser}
+                userDetails={this.state.userToDelete}
+                />
                 <section>
                     <p className="Detail_User_Data_Header">USER DATA</p>
                 </section>
                 <section className="Operations">
-                    <button> 
+                    <button onClick={this.addUserHandler}> 
                         <ion-icon name="add-circle-outline"></ion-icon>
                         <p>ADD USER</p></button>
                 </section>

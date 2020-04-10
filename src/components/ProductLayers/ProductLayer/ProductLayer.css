@@ -58,6 +58,10 @@
     align-items: center;
 }
 
+.imageContainer img{
+    width: 95%;
+}
+
 @media (min-width: 800px){
     .Product__Detail{
         margin : 2px 7px;
