@@ -1,15 +1,10 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import * as actionCreator from '../../Store/actions'
-import NavBarMin from '../../components/UI/NavBarMin/NavBarMin'
-import Navbar from '../../components/Navbar/Navbar'
-import Backdrop from '../../components/UI/Backdrop/Backdrop'
 import ProductRow from '../../components/ProductRow/ProductRow'
 import axios from '../../Axios'
 import Aux from '../../hoc/Aux'
 import Spinner from '../../components/UI/Spinner/Spinner'
-import Login from '../Authentication/Login/Login'
-import SignIn from '../Authentication/SignIn/SignIn'
 import './Product.css'
 import PreOrder from '../../components/PreOrder/PreOrder'
 
@@ -43,6 +38,7 @@ class Products extends Component{
                 <ProductRow 
                     key={index}
                     rowProduct={element}
+                    showOrder
                 />
             ))
             display = toDisplay

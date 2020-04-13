@@ -32,7 +32,6 @@
     align-items: center;
     align-self: center;
 }
-
 .hideUserAddForm{
     opacity: 0;
     transform: translateY(200%);

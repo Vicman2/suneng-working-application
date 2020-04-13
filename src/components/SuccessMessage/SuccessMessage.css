@@ -1,0 +1,6 @@
+.SuccessMessage{
+    background-color: rgba(7, 124, 7, 0.984);
+    color: rgba(6, 32, 6, 0.89);
+    padding: 5px 10px;
+    border-radius: 10px;
+}

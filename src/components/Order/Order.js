@@ -11,9 +11,9 @@ const Order = (props) => {
     return (
         <Aux>
             <div className="Order">
-                <p>{props.id}</p>
-                <p>{props.productName} </p>
-                <p> {dateToShow} </p>
+                <p className="OrderId">{props.id}</p>
+                <p className="OrderName">{props.productName} </p>
+                <p className="OrderDate"> {dateToShow} </p>
                 <p className="status"> {props.deliveryStatus} </p>
             </div>
         </Aux>

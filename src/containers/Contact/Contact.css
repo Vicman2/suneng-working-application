@@ -23,6 +23,22 @@
     display: flex;
     justify-content: flex-end;
 }
+.Btn__Div input{
+    background: #E30207;
+    color: white;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+.Btn__Div input:hover{
+    background-color: white;
+    color: #E30207;
+    border: 1px solid #E30207;
+
+}
 .SubmitButton{
     background: #E30207;
     color: white;

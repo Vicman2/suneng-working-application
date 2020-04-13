@@ -23,8 +23,7 @@ class Orders extends Component{
             this.setState({orders: response.data.data})
         })
         .catch(err => {
-            console.log(err.response)
-            if(err.response.status === 404){
+            if(err.response && err.response.status === 404){
                 this.setState({orders: []})
             }
         })
@@ -48,6 +47,7 @@ class Orders extends Component{
         }
 
         if(this.state.orders && this.state.orders.length>=3 ){
+            console.log(this.state.orders)
             toShow = this.state.orders.map(oneOrder=> (
                 <Order
                 key={oneOrder._id}

@@ -6,10 +6,14 @@ import Input from '../../components/UI/Input/Input'
 import Aux from '../../hoc/Aux'
 import './Contact.css'
 import axios from '../../Axios'
+import Spinner from '../../components/UI/Spinner/Spinner';
+import SuccessMessage from '../../components/SuccessMessage/SuccessMessage';
 
 class Contact extends Component{
     state = {
+        successfulSubmisson:false,
         isFormValid: false,
+        isSubmitted: false,
         formInputs: {
             name: {
                 elemType: "input",
@@ -114,11 +118,11 @@ class Contact extends Component{
         for(let elem in validaity){
             validaity[elem].value = ""
         }
-        console.log(validaity)
         this.setState({formInputs: validaity})
     }
     submitFormHandler = (event) => {
         event.preventDefault()
+        this.setState({isSubmitted:true})
         const data = {}
         for(let key in this.state.formInputs){
             const keyPer = key
@@ -126,17 +130,14 @@ class Contact extends Component{
         }
         axios.post('/api/user/contact', data)
         .then(response => {
+            this.setState({isSubmitted: false,successfulSubmisson: true})
             this.clearField()
-            console.log(this.state.formInputs)
-            console.log(response)
         })
         .catch(err=> {
+            this.setState({isSubmitted: false, isFormValid:false})
             console.log(err)
         })
     }
-
-
-
     render(){
         let formElements = [];
         for(let elementName in this.state.formInputs){
@@ -144,6 +145,39 @@ class Contact extends Component{
                 id: elementName,
                 config: this.state.formInputs[elementName]
             })
+        }
+        let toDisplay
+        if(this.state.isSubmitted){
+            toDisplay = <Spinner />
+        }else{
+            toDisplay = 
+            <div className="Btn__Div">
+                <button className="SubmitButton" 
+                disabled={!this.state.isFormValid}
+                onClick={this.submitFormHandler}
+                >Submit</button>
+            </div>
+        }
+        let totalDisplay;
+        if(this.state.successfulSubmisson){
+            totalDisplay = <SuccessMessage
+             message="Your request have been recieved. We will get back to you as soon as possible"
+             />
+        }else{
+            totalDisplay =<form>
+            {formElements.map(element => (
+                <Input  
+                key={element.id}
+                elemType={element.config.elemType} 
+                config={element.config.config}
+                errorMessage={element.config.errorMessage}
+                valid={element.config.isValid}
+                touched={element.config.touched}
+                value={element.config.value}
+                changed={(event)=>this.elementValidationHandler(event, element.id)}/>
+            ))}
+            {toDisplay}
+        </form>
         }
         return (
             <Aux>
@@ -154,24 +188,7 @@ class Contact extends Component{
                             <ContactDetails />
                         </div>
                         <div className="Form__Div">
-                            <form>
-                                {formElements.map(element => (
-                                    <Input  
-                                    key={element.id}
-                                    elemType={element.config.elemType} 
-                                    config={element.config.config}
-                                    errorMessage={element.config.errorMessage}
-                                    valid={element.config.isValid}
-                                    touched={element.config.touched}
-                                    changed={(event)=>this.elementValidationHandler(event, element.id)}/>
-                                ))}
-                                <div className="Btn__Div">
-                                    <button className="SubmitButton" 
-                                    disabled={!this.state.isFormValid}
-                                    onClick={this.submitFormHandler}
-                                    >Submit</button>
-                                </div>
-                            </form>
+                            {totalDisplay}
                         </div>
                     </div>
                 </div>

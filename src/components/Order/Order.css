@@ -17,8 +17,18 @@
     color: white;
 }
 
+
 @media(min-width:800px){
     .Order{
         flex-direction: row;
+    }
+    .OrderId{
+        width: 20%;
+    }
+    .OrderName{
+        width: 30%;
+    }
+    .OrderDate{
+        width: 30%;
     }
 }

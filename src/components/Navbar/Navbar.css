@@ -28,6 +28,9 @@
 .profilePicture ion-icon{
    color: white;
 }
+.profilePicture ion-icon:hover{
+    cursor: pointer;
+}
 
 #ScrollDown{
     background: #000035;

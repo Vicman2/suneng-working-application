@@ -28,7 +28,9 @@ const input = (props) => {
             <Aux>
                 <textarea  
                 className="Input__Element"  
-                onChange={props.changed} {...props.config}>{props.value}</textarea>
+                onChange={props.changed} 
+                value={props.value}
+                {...props.config}></textarea>
                 <div className={classes}>{props.errorMessage}</div>
             </Aux>
         )

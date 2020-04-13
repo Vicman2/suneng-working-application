@@ -19,6 +19,7 @@ const productRow = (props) => {
         details={element.details}
         name={element.name}
         preOrdered={()=>onOrder(element.name)}
+        showOrder={props.showOrder}
         />
     ))
     return (

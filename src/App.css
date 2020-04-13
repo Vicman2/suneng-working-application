@@ -4,7 +4,6 @@
   overflow: hidden;
   box-sizing: border-box;
   overflow-x: hidden;
-  min-height: 100;
 }
 .NavBar_Top{
   z-index: 100;

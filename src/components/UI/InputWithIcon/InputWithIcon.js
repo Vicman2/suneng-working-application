@@ -32,8 +32,9 @@ const inputWithIcon = (props) => {
                 <textarea  
                 className="Input__Element"  
                 onChange={props.changed} 
-                {...props.config}>
-                {props.value}</textarea>
+                {...props.config}
+                 value={props.value}>
+                </textarea>
                 <div className={classes}>{props.errorMessage}</div>
             </Aux>
         )

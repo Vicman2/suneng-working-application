@@ -55,7 +55,7 @@
 .Socials{
     color: #E30207;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-self: auto;
 }
 ion-icon{
