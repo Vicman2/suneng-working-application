@@ -1,7 +1,11 @@
 .DeleteProductWrapper{
     margin: auto;
     width: 100vw;
-    height: 80%;
+    height: 100%;
+    right: 0;
+    top:0;
+    left: 0;
+    bottom: 0;
     z-index: 205;
     position: fixed;
     display: flex;
@@ -15,6 +19,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 20px;
+    border-radius: 10px;
 }
 .DeleteQuestion{
     text-align: center;

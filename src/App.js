@@ -79,41 +79,43 @@ logoutHandler = () => {
   render(){
     return (
       <Aux>
-        <section className="Structure">
-          <NavBarMin 
-          toggled={this.state.toggled}
-          toggler={this.navigationToggler}
-          />
-          <Backdrop toggled={this.state.toggled} clicked={this.navigationToggler}/>
-          <Login 
-          showUp={this.state.clickedLogin}
-          clicked={this.clickedLoginHandler}/>
-          <SignIn 
-          showUp ={this.state.clickedSignin}
-          clicked= {this.clickedSigninHandler}/>
-          <Profile 
-          isToggled={this.state.showProfile}
-          removeProfile={this.cancelProfileHandler}
-          logout={this.logoutHandler}/>
-          <section className="NavBar_Top">
-            <Navbar
-            toToggle={this.navigationToggler}
-            isTop={this.state.isTop}
-            loginClicked={this.clickedLoginHandler}
-            signinClicked={this.clickedSigninHandler}
-            showProfile={this.showProfileHandler}/>
+        <div className="Page_Container">
+          <section className="Structure">
+            <NavBarMin 
+            toggled={this.state.toggled}
+            toggler={this.navigationToggler}
+            />
+            <Backdrop toggled={this.state.toggled} clicked={this.navigationToggler}/>
+            <Login 
+            showUp={this.state.clickedLogin}
+            clicked={this.clickedLoginHandler}/>
+            <SignIn 
+            showUp ={this.state.clickedSignin}
+            clicked= {this.clickedSigninHandler}/>
+            <Profile 
+            isToggled={this.state.showProfile}
+            removeProfile={this.cancelProfileHandler}
+            logout={this.logoutHandler}/>
+            <section className="NavBar_Top">
+              <Navbar
+              toToggle={this.navigationToggler}
+              isTop={this.state.isTop}
+              loginClicked={this.clickedLoginHandler}
+              signinClicked={this.clickedSigninHandler}
+              showProfile={this.showProfileHandler}/>
+            </section>
           </section>
-        </section>
-      <Switch>
-        <Route path="/products" component={Products}/>
-        <Route path="/orders" component={Orders} />
-        <Route path="/services" component={Services} />
-        <Route path="/aboutUs" component={Team}/>
-        <Route path="/contact" component={Contact}/>
-        <Route path="/admin" component={Admin} />
-        <Route path="/" exact component={Structure} />
-      </Switch>
-      <Footer />
+          <Switch>
+            <Route path="/products" component={Products}/>
+            <Route path="/orders" component={Orders} />
+            <Route path="/services" component={Services} />
+            <Route path="/aboutUs" component={Team}/>
+            <Route path="/contact" component={Contact}/>
+            <Route path="/admin" component={Admin} />
+            <Route path="/" exact component={Structure} />
+          </Switch>
+          <Footer />
+        </div>
     </Aux>
     )
   }

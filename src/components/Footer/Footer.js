@@ -10,11 +10,11 @@ const footer = (props) => {
                 <p>Copyright 2019. All rights Reserved.</p>
                 <p>Privacy Policy</p>
                 <p>Terms and Conditions</p>
-                <p className="Fotter__Socials">
+                <div className="Fotter__Socials">
                     <ion-icon name="logo-twitter"></ion-icon>
                     <ion-icon name="logo-facebook"></ion-icon>
                     <ion-icon name="logo-instagram"></ion-icon>
-                </p>
+                </div>
             </div>
         </Aux>
     )

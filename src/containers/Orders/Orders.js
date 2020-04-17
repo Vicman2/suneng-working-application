@@ -11,7 +11,7 @@ import Backdrop from '../../components/UI/Backdrop/Backdrop'
 
 class Orders extends Component{
     state = {
-        orders: null
+        orders: []
     }
     getOrders = ()=>{
         Axios.get('/api/order/get-order', {
@@ -41,26 +41,29 @@ class Orders extends Component{
         this.props.history.push("/")
     }
     render(){
+        
         let toShow = <Spinner />
-        if(!this.props.token){
-            toShow= <NotAuthenticated cancelPage={this.cancelOrderPage} show/>
-        }
-
+        
         if(this.state.orders && this.state.orders.length>=3 ){
-            console.log(this.state.orders)
-            toShow = this.state.orders.map(oneOrder=> (
+            toShow = this.state.orders.map((oneOrder, index)=> {
+                return(
                 <Order
+                index={index}
                 key={oneOrder._id}
                 id={oneOrder._id}
                 deliveryStatus={oneOrder.status}
                 productName={oneOrder.product.name}
                 date = {oneOrder.orderDate.toString()}
                 />
-            ))
+                )}
+                )
         }else if(this.state.orders &&  this.state.orders.length === 0){
-            toShow = (
-                <p className="noOrder">You dont have an order yet !!!</p>
-            )
+                toShow = (
+                    <p className="noOrder">You dont have an order yet !!!</p>
+                    )
+            }
+        if(!this.props.token){
+        toShow= <NotAuthenticated cancelPage={this.cancelOrderPage} show/>
         }
         return (
             <Aux>

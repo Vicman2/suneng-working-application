@@ -7,6 +7,7 @@ import Spinner from '../../../components/UI/Spinner/Spinner'
 import ProductList from '../../../components/ProductList/ProductList'
 import AddProduct from './AddProduct/AddProduct'
 import DeleteProduct from './DeleteProduct/DeleteProduct'
+import EditProduct from './EditProduct/EditProduct'
 
 class Products extends Component{
     state = {
@@ -14,6 +15,8 @@ class Products extends Component{
         productToDelete: null,
         deleteItem: false, 
         addProduct: false,
+        editProduct: false, 
+        productToEdit:null
     }
     getProducts = ()=> {
         Axios.get('/api/product/allProducts', {
@@ -33,6 +36,14 @@ class Products extends Component{
         this.setState({deleteItem:false})
         this.getProducts()
     }
+    editProductHandler = (productId)=>{
+        const prodDetail = this.state.productsFetched.find(prod => prod._id == productId);
+        this.setState({editProduct:true, productToEdit: prodDetail})
+    }
+    cancelEdithandler = ()=>{
+        this.setState({editProduct:false})
+        this.getProducts()
+    }
     componentDidMount(){
         this.getProducts()
     }
@@ -47,14 +58,18 @@ class Products extends Component{
         if(this.state.productsFetched.length === 0 ){
             toDisplay = <Spinner />
         }else{
-            toDisplay = this.state.productsFetched.map(product => (
+            toDisplay = this.state.productsFetched.map((product,index) => {
+                return(
                 <ProductList 
+                key={product.name}
+                index={index}
                 name={product.name}
                 details={product.details}
                 source={product.machineSource}
                 deleteProduct={()=>this.deleteProductHandler(product._id)}
+                editProduct={()=>this.editProductHandler(product._id)}
                 />
-            ))
+            )})
         }
         if(this.state.deleteItem){
             toDisplay = <Spinner />
@@ -70,7 +85,11 @@ class Products extends Component{
                 prodDetails={this.state.productToDelete}
                 isClicked={this.state.deleteItem}
                 cancel={this.cancelDeleteProduct}
-
+                />
+                <EditProduct
+                prodDetails ={this.state.productToEdit}
+                isClicked={this.state.editProduct}
+                cancel={this.cancelEdithandler}
                 />
                 <div className="Products">
                     <div className="Product_Title_Div">

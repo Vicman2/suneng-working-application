@@ -36,3 +36,6 @@
     text-align: right;
     margin-right: 15px;
 }
+.react-multiple-carousel__arrow {
+    z-index: 25;
+}

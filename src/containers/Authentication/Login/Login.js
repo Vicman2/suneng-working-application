@@ -133,7 +133,7 @@ class Login extends Component{
             subMitErrorClass.push("Hide__Error")
         }
         let toDisplay =  (
-            <input type="submit" value="Submit"/>
+            <button disabled={!this.state.isFormValid}>Cancel</button>
         )
         if(this.state.loading){
             toDisplay = <Spinner />

@@ -9,6 +9,30 @@
     border-radius: 5px;
     padding: 1px 5px;
 }
+.Operations{
+    display: flex;
+    justify-content: space-between;
+}
+.Pagination{
+    display: flex;
+    justify-content: space-between;
+}
+.Pagination p{
+    margin: auto 3px;
+    font-weight: bolder;
+}
+.Arrow{
+    background-color:#000035 ;
+    color: white;
+    border:1px solid #000035;
+    padding: 4px;
+    border-radius: 3px;
+}
+.Arrow:hover{
+    background-color: white;
+    color: #000035;
+    cursor: pointer;
+}
 .Operations button>ion-icon{
     margin: 0;
 }

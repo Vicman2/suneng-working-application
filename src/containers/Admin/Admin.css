@@ -49,3 +49,8 @@
     font-weight: bolder;
     letter-spacing: 2px;
 }
+.Active_Compo p{
+    color: #000035;
+    background-color: rgb(138, 43, 226);
+    cursor: pointer;
+}

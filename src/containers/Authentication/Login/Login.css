@@ -5,6 +5,8 @@
     justify-content: center;
     padding: 20px;
     width: 80vw;
+    border-radius: 10px;
+
 }
 .inputWithIcon{
     position: relative;
@@ -58,7 +60,7 @@
     justify-content: flex-end;
     margin: 10px auto;
 }
-.Submit__Wrapper input{
+.Submit__Wrapper button{
     width: 70px;
     border: 2px solid  #000035;
     background-color: #000035;

@@ -62,7 +62,9 @@
 
 .imageContainer img{
     width: 95%;
+    height: 250px;
 }
+
 
 @media (min-width: 800px){
     .Product__Detail{

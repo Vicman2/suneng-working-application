@@ -1,5 +1,5 @@
 .Contact{
-    margin: 10px 35px;
+    margin: 10px;
     margin-top: 85px
 }
 .Contact__Header{
@@ -56,6 +56,10 @@ button:disabled{
 }
 
 @media (min-width: 800px){
+    .Contact{
+        margin: 10px 35px;
+        margin-top: 85px
+    }
     .Contact__Wrapper{
         flex-direction: row;
     }

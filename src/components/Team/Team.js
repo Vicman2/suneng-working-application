@@ -32,7 +32,16 @@ const team = (props) => {
     return (
         <Aux>
             <section className="Team" id="De__Team">
-                <p className="Team__Header">The Team</p>
+                <p className="Team__Header">About Us</p>
+                <p className="About_Content">The company SUNENG was founded in 1982, SUNENG AND WORKS LIMITED develop into 
+                    an inventive state of craft company in mechanical and civil Enginnering. 
+                    We ensure that our staffs, technicians and engineers are properly trained to call 
+                    them to terms with the latest technology and industry best practices. We are 
+                    equipped with mordern mechaneries and equipment for construction to ensure that Jobs are 
+                    perfectly done. Satisfaction is our gurantee. Our clients in both private and public 
+                    sectors can attest to our job quality and on time delivery. The Company is now being 
+                    manageed by Eng. Nnadi Samuel who have proven himself worthy after the founder(The father)
+                    died.</p>
                 <section className="Team__Mates">
                     <Carousel responsive={responsive} autoPlay infinite>
                         <section className="Mate">

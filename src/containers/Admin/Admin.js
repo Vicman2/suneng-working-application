@@ -7,19 +7,24 @@ import Users from './Users/Users'
 
 class Admin extends Component{
     state = {
-        products: true
+        products: false,
+        users: true
     }
     swithToUserHandler = ()=> {
-        this.setState({products: false})
+        this.setState({products: false, users:true})
     }
     switchToProductsHandler = () => {
-        this.setState({products: true})
+        this.setState({products: true, users:false})
     }
     render(){
         let toDisplay
+        let UsersClasses = ""
+        let ProductClasses=""
         if(this.state.products){
+            ProductClasses = "Active_Compo"
             toDisplay = <Products />
        }else{
+           UsersClasses = "Active_Compo"
            toDisplay = <Users />
        }
         return(
@@ -28,10 +33,10 @@ class Admin extends Component{
                         <h2 className="Admin_Header">ADMINISTRATION</h2>
                         <div className="Admin_Area">
                             <div className="De_Components">
-                                <section>
+                                <section className={UsersClasses}>
                                     <p onClick={this.swithToUserHandler}> User Management</p>
-                                </section>
-                                <section>
+                                </section> 
+                                <section className={ProductClasses}>
                                     <p onClick={this.switchToProductsHandler}>Product Management</p>
                                 </section>
                             </div>

@@ -16,7 +16,7 @@ const Profile = (props) => {
     }
     return(
         <Aux>
-            <Backdrop toggled={props.isToggled && props.isLoggedIn}/>
+            <Backdrop clicked={props.removeProfile} toggled={props.isToggled && props.isLoggedIn}/>
             <div className={classes.join(" ")}>
                 <section className="Profile__Top">
                     <p><b>Your Account</b></p>

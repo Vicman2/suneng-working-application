@@ -16,26 +16,47 @@ class Users extends Component{
         deleteItem : false,
         userToEdit: null,
         editUser : false, 
-        addUser: false
+        addUser: false, 
+        pageNumber: 0, 
+        wantedUsers:10, 
+        totalUsers: 0, 
+        totalPages:null
     }
-    getUsers = ()=>{
-        Axios.get('/api/user/get-users', {
+    getUsers = (pageNumber)=>{
+        Axios.get(`/api/user/get-users?pageNumber=${pageNumber +1}&numberOfUsers=${this.state.wantedUsers}`, { 
             headers: {
                 'x-access-token': this.props.token
             }
         })
         .then((response)=> {
-            this.setState({users:response.data.data})
+            let totalPages = Math.round(response.data.data.totalUsers/this.state.wantedUsers)
+            this.setState((prev, props)=> {
+                return {users:response.data.data.requestedUsers,
+                 totalUsers: response.data.data.totalUsers,
+                 pageNumber: prev.pageNumber+1, 
+                 totalPages: totalPages
+                }})
         }).catch((error) => {
             console.log(error.response)
         })
     }
     componentDidMount(){
-        this.getUsers();
+        this.getUsers(this.state.pageNumber+1);
     }
-    deleteUser=(userId)=>{
-        
-        
+    previousUsers = () => {
+        this.getUsers(this.state.pageNumber -1)
+        this.setState((prev, props) => {
+            return {pageNumber : prev.pageNumber -1}
+        })
+    }
+    nextUsers = () => {
+        let nextPage = this.state.pageNumber + 1 >= this.state.totalPages ? this.state.pageNumber +1: this.state.pageNumber
+        if(nextPage > this.state.pageNumber){
+            this.getUsers(nextPage)
+            this.setState((prev, props) => {
+                return {pageNumber : prev.pageNumber +1}
+            })
+        }
     }
     editUserHandler = async (userId)=>{
         const userDetail = this.state.users.find(user => user._id == userId);
@@ -63,17 +84,20 @@ class Users extends Component{
         this.getUsers()
     }
     render(){
-        let toShow = this.state.users.map(element => (
-            <User 
-            key={element._id}
-            id={element._id}
-            name={element.name}
-            email={element.email}
-            role={element.role}
-            deleteUser ={() =>this.deleteUserHandler(element._id)}
-            editUser = {()=> this.editUserHandler(element._id)}
-            />
-        ))
+        let toShow = this.state.users.map((element,index )=> {
+            return(
+                <User 
+                index={index}
+                key={element._id}
+                id={element._id}
+                name={element.name}
+                email={element.email}
+                role={element.role}
+                deleteUser ={() =>this.deleteUserHandler(element._id)}
+                editUser = {()=> this.editUserHandler(element._id)}
+                />
+        )})
+        
         return (
             <Aux>
                 <EditForm 
@@ -96,7 +120,13 @@ class Users extends Component{
                 <section className="Operations">
                     <button onClick={this.addUserHandler}> 
                         <ion-icon name="add-circle-outline"></ion-icon>
-                        <p>ADD USER</p></button>
+                        <p>ADD USER</p>
+                    </button>
+                    <div className="Pagination">
+                        <p className="Arrow" onClick={this.previousUsers}>Previous</p>
+                        <p> {this.state.pageNumber} of  {this.state.totalPages} </p>
+                        <p className="Arrow" onClick={this.nextUsers}>Next</p>
+                    </div>
                 </section>
                 <section className="actions">
                     <p className="User_Id">Id</p>

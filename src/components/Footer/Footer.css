@@ -2,18 +2,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    margin: auto 25px;
-    margin-top: 30px;
-    height: 2.5rem;
+    justify-content: space-around;
+    margin: auto 5px;
+    height: 15rem;
     bottom: 0;
+    position: absolute;
+    width: 100vw;
+    background-color: #eeeef0;
 }
 .Fotter__Socials{
-    color:#E30207
+    display: flex;
+    align-items: center;
+    color:#E30207;
+    padding: 6px auto;
+    margin-top: 5px;
 }
 
 @media(min-width: 800px){
     .Footer{
         flex-direction: row;
+        height: 2.5rem;
     }
 }

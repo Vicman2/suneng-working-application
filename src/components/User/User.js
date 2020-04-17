@@ -3,9 +3,13 @@ import Aux from '../../hoc/Aux'
 import './User.css'
 
 const User = (props)=> {
+    const classes= ["User"]
+    if(props.index % 2 !== 0){
+        classes.push("Odd")
+    }
     return (
         <Aux>
-            <div className="User">
+            <div className={classes.join(' ')}>
                 <p className="User_Id">{props.id} </p>
                 <p className="User_Name">{props.name} </p>
                 <p className="User_Email">{props.email} </p>

@@ -164,9 +164,9 @@ class EditForm extends Component{
         }
         let isClicked = this.props.isClicked;
     
-        let classes = ["EditProductFormWrapper"]
+        let classes = ["EditUserFormWrapper"]
         if(isClicked){
-            classes.push('ShowEditProduct')
+            classes.push('ShowEditUser')
         }else{
             classes.push('hideUserEditForm')
         }
@@ -177,7 +177,7 @@ class EditForm extends Component{
             subMitErrorClass.push("Hide__Error")
         }
         let toDisplay =  (
-            <input type="submit" value="Submit"/>
+            <button disabled={!this.state.isFormValid}>Submit</button>
         )
         if(this.state.loading){
             toDisplay = <Spinner />
@@ -188,7 +188,7 @@ class EditForm extends Component{
         }else{ 
             display = 
             <div className={classes.join(" ")}>
-                <div className="EditProduct">
+                <div className="EditUser">
                     <div className="CancelButton" onClick={this.props.cancel}>
                         <button>Cancel</button>
                     </div>

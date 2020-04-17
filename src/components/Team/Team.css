@@ -1,9 +1,14 @@
 .Team{
     background: #000035;
-    height: 600px;
-    margin-top: 70px;
+    margin-top: 65px;
+    padding-bottom: 10px;
 }
-
+.About_Content{
+    color: rgba(255, 255, 255, 0.911);
+    padding: 10px;
+    letter-spacing: 1.5px;
+    word-spacing: 3.5px;
+}
 .Team__Header{
     text-align: center;
     color: #FBFBFB;
@@ -62,4 +67,9 @@ ion-icon{
     margin: 2px 5px;
     font-size: 25px;
     margin-bottom: 15px;
+}
+@media(min-width:800px){
+    .Team{
+        margin-top: 70px;
+    }
 }

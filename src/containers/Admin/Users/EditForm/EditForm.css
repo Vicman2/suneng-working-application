@@ -1,4 +1,4 @@
-.EditProduct{
+.EditUser{
     background-color:white;
     display: flex;
     flex-direction: column;
@@ -6,7 +6,7 @@
     padding: 20px;
     width: 30%;
 }
-.ShowEditProduct{
+.ShowEditUser{
     margin: auto;
     width: 30%;
     height: 80%;
@@ -21,10 +21,14 @@
     transform: translateY(0) !important;
     transition: opacity 200ms, transform 500ms;
 }
-.EditProductFormWrapper{
+.EditUserFormWrapper{
     margin: auto;
-    width: 100%;
-    height: 80%;
+    width: 100vw;
+    height: 100%;
+    right: 0;
+    top:0;
+    left: 0;
+    bottom: 0;
     z-index: 204;
     position: fixed;
     display: flex;

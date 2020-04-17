@@ -4,12 +4,9 @@
     align-items: center;
     justify-content: space-between;
     box-shadow: 3px 3px 3px rgba(90, 107, 121, 0.493);
-    padding: 10px;
 }
 .Order p{
-    box-shadow:  2px 2px 4px #ccc;
-    border : 10px;
-    padding: 15px 5px;
+    padding: 10px 5px;
     font-weight: bolder;
 }
 .status{
@@ -17,6 +14,9 @@
     color: white;
 }
 
+.Odd{
+    background-color: rgb(223, 219, 219);
+}
 
 @media(min-width:800px){
     .Order{

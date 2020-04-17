@@ -3,11 +3,15 @@ import './ProductList.css'
 import Aux from '../../hoc/Aux'
 
 const ProductList = (props) => {
-    const initialSource = 'http://localhost:2020/api/machines/';
+    const initialSource = 'https://suneng-working-project.herokuapp.com/api/machines/';
     const encodeSource = initialSource+ props.source
+    const classes= ["ProductList"]
+    if(props.index % 2 !== 0){
+        classes.push("Odd")
+    }
     return (
         <Aux>
-            <div className="ProductList">
+            <div className={classes.join(" ")}>
                 <p className="Product_Name">{props.name} </p>
                 <p className="Product_Details">{props.details} </p>
                 <p className="Product_Image"> <img src={encodeSource} alt={props.name}/> </p>

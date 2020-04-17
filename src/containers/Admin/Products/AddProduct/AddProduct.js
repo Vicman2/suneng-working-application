@@ -4,8 +4,9 @@ import Aux from '../../../../hoc/Aux'
 import Spinner from '../../../../components/UI/Spinner/Spinner';
 import Backdrop from '../../../../components/UI/Backdrop/Backdrop';
 import Axios from '../../../../Axios'
-import InputWithIcon from '../../../../components/UI/InputWithIcon/InputWithIcon';
+import Input from '../../../../components/UI/Input/Input';
 import { connect } from 'react-redux';
+import FilePicker from '../../../../components/UI/FilePicker/FilePicker';
 
 
 class AddProduct extends Component{
@@ -15,7 +16,10 @@ class AddProduct extends Component{
         loading: false,
         serverError: false,
         invalidFormErrorMessage:"Please, fill the forms accurately before you submit",
-        file:null,
+        file:{
+            value:null,
+            isValid: false,
+        },
         formInputs: {
             name: {
                 elemType: "input", 
@@ -51,7 +55,7 @@ class AddProduct extends Component{
                     return valid
                 },
                 isValid: false,
-                errorMessage: "Details must be of length greater than 10 but less than 400",
+                errorMessage: "Details must be of length greater than 30 but less than 400",
                 touched: false, 
                 iconName: "mail"
             }
@@ -74,10 +78,16 @@ class AddProduct extends Component{
                 break;
             }
         }
+        theFormIsValid = theFormIsValid && this.state.file.isValid
         await this.setState({isFormValid: theFormIsValid})
     }
-    fileChangeHandler = (e)=>{
-        this.setState({file:e.target.files[0]})
+    fileChangeHandler = async(e)=>{
+        const file = {...this.state.file, 
+            value: e.target.files[0], 
+            isValid: true
+        }
+        await this.setState({file:file})
+        await this.checkValidity()
     }
     fileUploadHandler
     clearFields = ()=>{
@@ -85,9 +95,7 @@ class AddProduct extends Component{
         for(let elemName in initialField){
             initialField[elemName].value = '';
         }
-        const verifyPassword = {...this.state.verifyPassword}
-        verifyPassword.value = ''
-        this.setState({formInputs: initialField, verifyPassword: verifyPassword})
+        this.setState({formInputs: initialField})
     }
     formSubmitHandler = async (event)=>{
         event.preventDefault();
@@ -102,7 +110,7 @@ class AddProduct extends Component{
             for(const key in data){
                 formData.append(key, data[key])
             }
-            formData.append('prodImage', this.state.file)
+            formData.append('prodImage', this.state.file.value)
             
             await this.setState({loading: true})
             Axios.post('/api/product/add-product', formData, {
@@ -150,7 +158,7 @@ class AddProduct extends Component{
             subMitErrorClass.push("Hide__Error")
         }
         let toDisplay =  (
-            <input type="submit" value="Submit"/>
+            <button disabled={!this.state.isFormValid}>Submit</button>
         )
         if(this.state.loading){
             toDisplay = <Spinner />
@@ -163,11 +171,11 @@ class AddProduct extends Component{
                         <div className="CancelButton" onClick={this.props.clicked}>
                             <button>Cancel</button>
                         </div>
-                        
+                        <h1>Add Product</h1>
                         <p className={subMitErrorClass.join(" ")}>{this.state.invalidFormErrorMessage} </p>
                         <form onSubmit={this.formSubmitHandler} enctype="multipart/form-data">
                             {formElements.map(element => (
-                                <InputWithIcon
+                                <Input
                                 key={element.id}
                                 elemType={element.config.elemType}
                                 config={element.config.config}
@@ -179,7 +187,7 @@ class AddProduct extends Component{
                                 touched={element.config.touched}
                                 />)
                             )}
-                            <input type="file" onChange={this.fileChangeHandler}/>
+                           <FilePicker changed={this.fileChangeHandler} />
                              <div className="Submit__Wrapper">
                                 {toDisplay}
                              </div>

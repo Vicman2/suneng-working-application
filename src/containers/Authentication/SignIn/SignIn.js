@@ -185,7 +185,7 @@ class SignIn extends Component{
             subMitErrorClass.push("Hide__Error")
         }
         let toDisplay =  (
-            <input type="submit" value="Submit"/>
+            <button disabled={!this.state.isFormValid}>Submit</button>
         )
         if(this.state.loading){
             toDisplay = <Spinner />
@@ -196,7 +196,7 @@ class SignIn extends Component{
                 <div className={classes.join(" ")}>
                     <div className="SignIn">
                         <div className="CancelButton" onClick={this.props.clicked}>
-                            <button>Cancel</button>
+                            <button >Cancel</button>
                         </div>
                         
                         <h1>Create an account</h1>

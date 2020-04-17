@@ -11,7 +11,7 @@ import Spinner from '../UI/Spinner/Spinner';
 
 
 const PreOrder = (props) => {
-    const source = 'https://suneng-backend.herokuapp.com/api/machines/' + props.productToDisplay.machineSource
+    const source = 'http://localhost:2020/api/machines/' + props.productToDisplay.machineSource
     const classes=["Pre__Order"]
     const showNotAuthorizes = props.preOrdered && !props.loggedIn 
     if(!props.preOrdered || !props.loggedIn ){

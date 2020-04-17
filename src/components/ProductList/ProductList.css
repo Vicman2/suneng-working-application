@@ -9,6 +9,18 @@
     display: flex;
     justify-content: center;
 }
+.Product_Name{
+    width: 25%;
+}
+.Product_Details{
+    width: 35%;
+}
+.Product_Image{
+    width: 25%;
+}
+.sub_Operations{
+    width: 15%;
+}
 
 .Product_Image img{
     width: 50%;

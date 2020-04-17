@@ -1,0 +1,15 @@
+.Submit__Wrapper button{
+    background-color: #000035;
+    color:white;
+    border: 1px solid white;
+    padding: 5px 7px;
+    border-radius: 3px;
+}
+.Submit__Wrapper button:disabled{
+    background-color: #0000357a;
+}
+.Submit__Wrapper button:hover{
+    color: #000035;
+    background-color: white;
+    border: 1px solid #000035
+}
