@@ -30,7 +30,7 @@ class Users extends Component{
         })
         .then((response)=> {
             let assumedFloat = response.data.data.totalUsers/this.state.wantedUsers
-            let totalPages = (assumedFloat % 1) === 0 ? assumedFloat : assumedFloat + 1
+            let totalPages = (assumedFloat % 1) === 0 ? assumedFloat : Math.floor(assumedFloat)  + 1
             this.setState((prev, props)=> {
                 return {users:response.data.data.requestedUsers,
                  totalUsers: response.data.data.totalUsers,
