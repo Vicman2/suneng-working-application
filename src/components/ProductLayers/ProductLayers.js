@@ -10,7 +10,7 @@ import './ProductLayers.css';
 
 
 const ProductLayer = (props) => {
-  const baseUrl = "http://localhost:2020/api/machines/"
+  const baseUrl = "hhttps://suneng-backend.herokuapp.com/"
   let prod= null
   if(!props.products){
     prod = <Spinner />
