@@ -23,7 +23,7 @@ class Users extends Component{
         totalPages:null
     }
     getUsers = (pageNumber)=>{
-        Axios.get(`/api/user/get-users?pageNumber=${pageNumber +1}&numberOfUsers=${this.state.wantedUsers}`, { 
+        Axios.get(`/api/user/get-users?pageNumber=${pageNumber}&numberOfUsers=${this.state.wantedUsers}`, { 
             headers: {
                 'x-access-token': this.props.token
             }
@@ -41,7 +41,7 @@ class Users extends Component{
         })
     }
     componentDidMount(){
-        this.getUsers(this.state.pageNumber+1);
+        this.getUsers(this.state.pageNumber +1);
     }
     previousUsers = () => {
         this.getUsers(this.state.pageNumber -1)
