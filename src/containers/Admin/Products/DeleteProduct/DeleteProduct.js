@@ -16,7 +16,7 @@ class DeleteProduct extends Component{
             details:'',
             machineSource:'',
         },
-        initialSource: 'http://localhost:2020/api/machines/'
+        initialSource: 'https://suneng-backend.herokuapp.com/api/machines/'
     }
     componentDidUpdate(prevProps, prevState){
         if(prevProps.prodDetails !== this.props.prodDetails){

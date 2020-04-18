@@ -77,7 +77,7 @@ class Products extends Component{
         return(
             <Aux>
                 <AddProduct 
-                getProduct={this.getProducts}
+                getProducts={this.getProducts}
                 clicked={this.addProductHandler}
                 showUp={this.state.addProduct}
                 />
