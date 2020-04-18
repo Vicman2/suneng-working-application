@@ -18,7 +18,7 @@ class EditProduct extends Component{
         serverError: false,
         invalidFormErrorMessage:"Please, fill the forms accurately before you submit",
         file:null,
-        initialSource: 'http://localhost:2020/api/machines/',
+        initialSource: 'https://suneng-backend.herokuapp.com/api/machines/',
         formInputs: {
             name: {
                 elemType: "input", 

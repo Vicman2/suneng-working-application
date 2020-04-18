@@ -30,7 +30,7 @@ class AddProduct extends Component{
                 value:"",
                 validation: function(){
                     let valid = false;
-                    if(this.value.trim() !== '' && this.value.length >=3 && this.value.length <=30){
+                    if(this.value.trim() !== '' && this.value.length >=3 && this.value.length <=50){
                         valid = true;
                     }
                     return valid
