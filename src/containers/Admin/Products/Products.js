@@ -48,7 +48,6 @@ class Products extends Component{
         this.getProducts()
     }
     addProductHandler = async()=>{
-        console.log(this.state.addProduct, "I am functioning")
         await this.setState((prev, props) => {
             return {addProduct: !prev.addProduct}
         })

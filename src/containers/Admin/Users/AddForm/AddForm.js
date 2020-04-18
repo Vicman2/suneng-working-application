@@ -140,7 +140,7 @@ class AddForm extends Component{
             .then(response => {
                 this.setState({loading: false, serverError: false})
                 this.props.clicked()
-                this.props.getUsers()
+                this.props.getUsers(1)
                 this.clearFields()
             })
             .catch(error => {
