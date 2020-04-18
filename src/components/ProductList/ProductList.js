@@ -3,7 +3,7 @@ import './ProductList.css'
 import Aux from '../../hoc/Aux'
 
 const ProductList = (props) => {
-    const initialSource = 'https://suneng-backend.herokuapp.com/machines/';
+    const initialSource = 'https://suneng-backend.herokuapp.com/api/machines/';
     const encodeSource = initialSource+ props.source
     const classes= ["ProductList"]
     if(props.index % 2 !== 0){
