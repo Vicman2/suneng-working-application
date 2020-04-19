@@ -6,7 +6,7 @@ import './ProductRow.css'
 import { connect } from 'react-redux'
 
 const productRow = (props) => {
-    const baseUrl = "https://suneng-backend.herokuapp.com/api/machines"
+    const baseUrl = "https://suneng-backend.herokuapp.com/api/machines/"
     const onOrder = (name) => {
         const product = props.products.find(elem => elem.name == name)
         props.setPreOrdered(product)
