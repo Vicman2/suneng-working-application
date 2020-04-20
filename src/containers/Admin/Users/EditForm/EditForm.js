@@ -133,7 +133,6 @@ class EditForm extends Component{
                 data[deKey]= this.state.formInputs[deKey].value
             }
             await this.setState({loading: true})
-            console.log(data)
             Axios.put('/api/user/edit-user/'+this.props.userDetails._id, data, {
                 headers: {
                     'x-access-token': this.props.token

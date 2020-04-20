@@ -9,6 +9,12 @@
     border-radius: 5px;
     padding: 1px 5px;
 }
+.Detail_User_Data_Header{
+    letter-spacing: 2px;
+    font-weight: bolder;
+    font-size: 25px;
+}
+
 .Operations{
     display: flex;
     justify-content: space-between;

@@ -8,3 +8,12 @@
     letter-spacing: 3px;
     font-weight: bolder;
 }
+.Products_Pagination{
+    display: flex;
+    justify-content: flex-end;
+    align-self: center;
+    margin: 20px auto;
+}
+.Products_Pagination p{
+    margin: auto 5px;
+}

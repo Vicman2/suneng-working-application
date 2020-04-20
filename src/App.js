@@ -25,7 +25,8 @@ class App extends Component{
     toggled: false,
     clickedLogin: false,
     clickedSignin:false,
-    showProfile:false
+    showProfile:false, 
+    redirect: false, 
 }
 componentDidMount(){
     window.addEventListener('scroll', this.handleNavbar);
@@ -71,10 +72,14 @@ showProfileHandler = ()=> {
 cancelProfileHandler = ()=> {
   this.setState({showProfile: false})
 }
+redirect = ()=>{
+  this.setState({redirect: true})
+}
 logoutHandler = () => {
   this.props.onLogOut();
   localStorage.removeItem("sunengUserData");
   this.setState({clickedLogin: false, showProfile: false, clickedSignin: false})
+  this.redirect()
 }
   render(){
     return (

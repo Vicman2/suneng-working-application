@@ -1,6 +1,12 @@
 .Products{
     margin: auto;
 }
+.Product__Title{
+    font-weight: bolder;
+    font-size: 25px;
+    letter-spacing: 2px;
+
+}
 .Product_Title_Div{
     display: flex;
     justify-content: center;

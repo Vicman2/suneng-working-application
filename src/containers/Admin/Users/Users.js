@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import EditForm from './EditForm/EditForm'
 import AddForm from './AddForm/AddForm'
 import DeleteUser from './DeleteUser/DeleteUser'
+import InputWithIcon from '../../../components/UI/InputWithIcon/InputWithIcon'
 
 class Users extends Component{
     state = {
@@ -20,7 +21,19 @@ class Users extends Component{
         pageNumber: 0, 
         wantedUsers:10, 
         totalUsers: 0, 
-        totalPages:null
+        totalPages:null, 
+        search:{
+            elemType: "input",
+            config: {
+                type: 'text', 
+                placeholder: "Search User"
+            },
+            value:"",
+            isValid: false, 
+            errorMessage: "Name must be up to 3 letters",
+            touched: false,
+            iconName:"search"
+        }
     }
     getUsers = (pageNumber)=>{
         Axios.get(`/api/user/get-users?pageNumber=${pageNumber}&numberOfUsers=${this.state.wantedUsers}`, { 
@@ -34,7 +47,7 @@ class Users extends Component{
             this.setState((prev, props)=> {
                 return {users:response.data.data.requestedUsers,
                  totalUsers: response.data.data.totalUsers,
-                 pageNumber: prev.pageNumber+1, 
+                 pageNumber: prev.pageNumber === 0 ? prev.pageNumber+1: prev.pageNumber,
                  totalPages: totalPages
                 }})
         }).catch((error) => {
@@ -45,14 +58,17 @@ class Users extends Component{
         this.getUsers(this.state.pageNumber +1);
     }
     previousUsers = () => {
-        this.getUsers(this.state.pageNumber -1)
-        this.setState((prev, props) => {
-            return {pageNumber : prev.pageNumber -1}
-        })
+        let prevPage = this.state.pageNumber - 1 >= 1 ? this.state.pageNumber -1: 1
+        if(prevPage < this.state.totalPages && prevPage>=1){
+            this.getUsers(prevPage)
+            this.setState((prev, props) => {
+                return {pageNumber : prev.pageNumber -1}
+            })
+        }
     }
     nextUsers = () => {
-        let nextPage = this.state.pageNumber + 1 >= this.state.totalPages ? this.state.pageNumber +1: this.state.pageNumber
-        if(nextPage > this.state.pageNumber){
+        let nextPage = this.state.pageNumber + 1 <= this.state.totalPages ? this.state.pageNumber +1: this.state.pageNumber
+        if(nextPage > this.state.pageNumber && nextPage<= this.state.totalPages){
             this.getUsers(nextPage)
             this.setState((prev, props) => {
                 return {pageNumber : prev.pageNumber +1}
@@ -67,11 +83,11 @@ class Users extends Component{
     }
     cancelUserEdit = ()=> {
         this.setState({editUser: false})
-        this.getUsers()
+        this.getUsers(this.state.pageNumber)
     }
     addUserHandler = async()=>{
         await this.setState((prev, props) => {
-            return {addUser: !prev.addUser}
+            return {addUser: !prev.addUser, pageNumber: 1}
         })
     }
     deleteUserHandler= async(userId)=>{
@@ -82,7 +98,10 @@ class Users extends Component{
     }
     cancelDeleteUser = ()=>{
         this.setState({deleteItem:false})
-        this.getUsers()
+        this.getUsers(this.state.pageNumber)
+    }
+    refresh = ()=>{
+        this.setState({pageNumber: 1})
     }
     render(){
         let toShow = this.state.users.map((element,index )=> {
@@ -98,6 +117,17 @@ class Users extends Component{
                 editUser = {()=> this.editUserHandler(element._id)}
                 />
         )})
+        let prev, next;
+        if(this.state.pageNumber>=2){
+            prev = <p className="Arrow" onClick={this.previousUsers}>Previous</p>
+        }else{
+            prev = null
+        }
+        if(this.state.pageNumber< this.state.totalPages){
+            next = <p className="Arrow" onClick={this.nextUsers}>Next</p>
+        }else{
+            next = null
+        }
         
         return (
             <Aux>
@@ -109,6 +139,7 @@ class Users extends Component{
                 clicked={this.addUserHandler}
                 getUsers={this.getUsers}
                 showUp={this.state.addUser}
+                refresh={this.refresh}
                 />
                 <DeleteUser
                 isClicked={this.state.deleteItem}
@@ -124,9 +155,9 @@ class Users extends Component{
                         <p>ADD USER</p>
                     </button>
                     <div className="Pagination">
-                        <p className="Arrow" onClick={this.previousUsers}>Previous</p>
+                        {prev}
                         <p> {this.state.pageNumber} of  {this.state.totalPages} </p>
-                        <p className="Arrow" onClick={this.nextUsers}>Next</p>
+                        {next}
                     </div>
                 </section>
                 <section className="actions">
