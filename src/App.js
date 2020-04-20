@@ -34,7 +34,7 @@ componentDidMount(){
     if(authe){
       this.props.onLogin(authe)
     }
-    axios.get('api/product/allProducts')
+    axios.get(`/api/product/allProducts?pageNumber=1&numberOfProducts=10`)
     .then(response => {
         this.props.getMyProducts(response.data.data.data)
     })
