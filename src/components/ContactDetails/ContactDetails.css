@@ -17,13 +17,13 @@
 .Section__Header{
     font-family: Open Sans;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 18px;
     line-height: 25px;
     color: #212121;
 }
 .Contact__Value{
-    font-weight: lighter;
+    font-weight: 200;
 }
 
 @media (min-width: 800px){

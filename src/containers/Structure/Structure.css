@@ -14,6 +14,6 @@
     .subStructure{
         background-size: cover;
         background-position: top 20% right 75%;
-        height: 60rem;
+        height: 100vh;
     }
 }

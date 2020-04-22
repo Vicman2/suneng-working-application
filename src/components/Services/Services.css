@@ -35,7 +35,7 @@
     width: 100%;
 }
 .weDo{
-    font-weight: lighter;
+    font-weight: 200;
 }
 @media (min-width: 800px){
     .Services{

@@ -12,7 +12,7 @@ import InputWithIcon from '../../components/UI/InputWithIcon/InputWithIcon'
 
 class Products extends Component{
     state = {
-        productsFetched: [],
+        productsFetched: null,
         imageBaseUrl : 'localhost:2020/api/machines/',
         pageNumber: 0, 
         wantedProduct:9, 

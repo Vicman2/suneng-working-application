@@ -2,6 +2,7 @@
     background: #000035;
     margin-top: 65px;
     padding-bottom: 10px;
+    overflow: hidden;
 }
 .About_Content{
     color: rgba(255, 255, 255, 0.911);
@@ -13,7 +14,14 @@
     text-align: center;
     color: #FBFBFB;
     font-weight: 600;
-    font-size: 30px;
+    font-size: 36px;
+    margin: 10px auto;
+
+}
+.About_Content{
+    font-weight: 200;
+    font-size: 15px;
+    line-height: 20px
 }
 .Team__Mates{
     margin: 20px 30px;
@@ -71,5 +79,9 @@ ion-icon{
 @media(min-width:800px){
     .Team{
         margin-top: 70px;
+    }
+    .About_Content{
+        margin: auto 100px;
+        line-height: 20px;
     }
 }

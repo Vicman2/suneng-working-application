@@ -33,7 +33,7 @@ const team = (props) => {
         <Aux>
             <section className="Team" id="De__Team">
                 <p className="Team__Header">About Us</p>
-                <p className="About_Content">The company SUNENG was founded in 1982, SUNENG AND WORKS LIMITED develop into 
+                <p className="About_Content" data-aos="fade-down-right">The company SUNENG was founded in 1982, SUNENG AND WORKS LIMITED develop into 
                     an inventive state of craft company in mechanical and civil Enginnering. 
                     We ensure that our staffs, technicians and engineers are properly trained to call 
                     them to terms with the latest technology and industry best practices. We are 

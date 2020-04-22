@@ -2,6 +2,7 @@ import React from 'react'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Carousel from "react-multi-carousel";
+import AOS from 'aos'
 import "react-multi-carousel/lib/styles.css";
 import ProductLayerr from './ProductLayer/ProductLayer'
 import Spinner from '../UI/Spinner/Spinner'
@@ -10,6 +11,7 @@ import './ProductLayers.css';
 
 
 const ProductLayer = (props) => {
+  AOS.init()
   const baseUrl = "https://suneng-backend.herokuapp.com/api/machines/"
   let prod= null
   if(!props.products){
@@ -50,7 +52,7 @@ const ProductLayer = (props) => {
       };
     return (
         <Aux>
-          <div className="protect" id="Suneng__Products">
+          <div className="protect" id="Suneng__Products" data-aos="fade-up" data-aos-duration="3000">
             <p className="Title">Products</p>
             <section className="Lists">
                 <Carousel responsive={responsive} autoPlay infinite>
@@ -58,7 +60,7 @@ const ProductLayer = (props) => {
                 </Carousel>
             </section>
             <div className="btnCont">
-              <button className="see__All__Product" onClick={props.fullProductClicked}>View All<ion-icon name="arrow-dropright"></ion-icon></button>
+              <button className="see__All__Product" onClick={props.fullProductClicked}>View All</button>
             </div>
           </div>
         </Aux>
