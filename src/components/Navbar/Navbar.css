@@ -14,11 +14,14 @@
 .Logo{
     border-radius: 50px;
     color:white;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 0;
 }
 .profilePicture{
     background-color: transparent;
     margin-right: 30px;
+    padding-top: 10px;
 }
 .profilePicture img{
     width: 100%;

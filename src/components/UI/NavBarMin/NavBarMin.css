@@ -22,9 +22,11 @@
     z-index: 202;
 }
 .LogoMe{
-    background: white;
-    height: 20vh;
-    border-radius: 50px 50px;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 25px;
+    margin: 30px auto;
+    font-weight: 900;
     text-align: center;
 }
 .NavBarItems{
