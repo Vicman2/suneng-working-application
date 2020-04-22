@@ -11,7 +11,7 @@ import Backdrop from '../../components/UI/Backdrop/Backdrop'
 
 class Orders extends Component{
     state = {
-        orders: []
+        orders: null
     }
     getOrders = ()=>{
         Axios.get('/api/order/get-order', {
@@ -61,7 +61,7 @@ class Orders extends Component{
                 toShow = (
                     <p className="noOrder">You dont have an order yet !!!</p>
                     )
-            }
+        }
         if(!this.props.token){
         toShow= <NotAuthenticated cancelPage={this.cancelOrderPage} show/>
         }

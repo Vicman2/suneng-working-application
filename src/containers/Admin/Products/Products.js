@@ -11,7 +11,7 @@ import EditProduct from './EditProduct/EditProduct'
 
 class Products extends Component{
     state = {
-        productsFetched : [],
+        productsFetched : null,
         productToDelete: null,
         deleteItem: false, 
         addProduct: false,
@@ -89,7 +89,7 @@ class Products extends Component{
     }
     render(){
         let toDisplay
-        if(this.state.productsFetched.length === 0 ){
+        if(!this.state.productsFetched){
             toDisplay = <Spinner />
         }else{
             toDisplay = this.state.productsFetched.map((product,index) => {

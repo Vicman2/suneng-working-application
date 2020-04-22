@@ -12,7 +12,7 @@ import InputWithIcon from '../../../components/UI/InputWithIcon/InputWithIcon'
 
 class Users extends Component{
     state = {
-        users: [],
+        users: null,
         userToDelete: null,
         deleteItem : false,
         userToEdit: null,
@@ -104,19 +104,23 @@ class Users extends Component{
         this.setState({pageNumber: 1})
     }
     render(){
-        let toShow = this.state.users.map((element,index )=> {
-            return(
-                <User 
-                index={index}
-                key={element._id}
-                id={element._id}
-                name={element.name}
-                email={element.email}
-                role={element.role}
-                deleteUser ={() =>this.deleteUserHandler(element._id)}
-                editUser = {()=> this.editUserHandler(element._id)}
-                />
-        )})
+        let toShow = <Spinner />
+        if(this.state.users && this.state.users.length > 0){
+            toShow = this.state.users.map((element,index )=> {
+                return(
+                    <User 
+                    index={index}
+                    key={element._id}
+                    id={element._id}
+                    name={element.name}
+                    email={element.email}
+                    role={element.role}
+                    deleteUser ={() =>this.deleteUserHandler(element._id)}
+                    editUser = {()=> this.editUserHandler(element._id)}
+                    />
+            )})
+        }
+        
         let prev, next;
         if(this.state.pageNumber>=2){
             prev = <p className="Arrow" onClick={this.previousUsers}>Previous</p>

@@ -58,9 +58,6 @@ clickedLoginHandler = ()=>{
     return {clickedLogin: !prev.clickedLogin}
   })
 }
-goToFullProductHandler = ()=>{
-    this.props.history.push('/products')
-}
 clickedSigninHandler =()=> {
     this.setState((prev,props) => {
       return {clickedSignin: !prev.clickedSignin}
@@ -72,14 +69,10 @@ showProfileHandler = ()=> {
 cancelProfileHandler = ()=> {
   this.setState({showProfile: false})
 }
-redirect = ()=>{
-  this.setState({redirect: true})
-}
 logoutHandler = () => {
   this.props.onLogOut();
   localStorage.removeItem("sunengUserData");
   this.setState({clickedLogin: false, showProfile: false, clickedSignin: false})
-  this.redirect()
 }
   render(){
     return (

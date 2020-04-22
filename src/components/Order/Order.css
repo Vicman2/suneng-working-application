@@ -14,11 +14,12 @@
     color: white;
 }
 
-.Odd{
-    background-color: rgb(223, 219, 219);
-}
+
 
 @media(min-width:800px){
+    .Odd{
+        background-color: rgb(223, 219, 219);
+    }
     .Order{
         flex-direction: row;
     }
