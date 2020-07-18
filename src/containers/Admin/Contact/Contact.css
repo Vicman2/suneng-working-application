@@ -1,0 +1,19 @@
+.Contact__Title{
+    font-weight: bolder;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.Contact_Title_Div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.Pagination_Contact{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    margin:auto 5px;
+}

@@ -16,7 +16,7 @@ const NavItems = (props) => {
             <NavItem name="Services" exact url="/services" />
             <NavItem name="About Us" exact url="/aboutUs" />
             <NavItem name="Contact" exact url="/contact" />
-            <NavItem name="Orders" url="/orders" />
+            <NavItem name="Orders" exact url="/orders" />
             {admini}
         </ul>
     )

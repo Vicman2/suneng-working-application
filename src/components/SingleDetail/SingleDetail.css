@@ -1,0 +1,16 @@
+.SingleDetail{
+    display: flex;
+    text-align: center;
+}
+.detailerName{
+    width: 15%;
+}
+.detailerEmail{
+    width: 20%;
+}
+.detailerPhone{
+    width: 15%;
+}
+.detailerSubject{
+    width: 50%;
+}

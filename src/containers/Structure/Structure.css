@@ -2,6 +2,7 @@
     position: relative;
     background: linear-gradient( rgba(0,0,0,0.5), rgba(0,0,0,0.7)),url('./Assets/spencer-davis-YEmsw57gYa8-unsplash.jpg');
     background-size: cover;
+    background-attachment: scroll;
     background-position: center;
     background-repeat: no-repeat;
     width: 100vw;

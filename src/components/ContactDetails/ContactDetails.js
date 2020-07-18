@@ -5,7 +5,6 @@ import './ContactDetails.css'
 
 const contactDetails = (props) => {
     return (
-
         <Aux>
             <p className="We__Are__Here">We are here</p> 
             <p className="To__Serve">To serve you</p>

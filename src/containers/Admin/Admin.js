@@ -4,28 +4,37 @@ import './Admin.css'
 import Aux from '../../hoc/Aux'
 import Products from './Products/Products'
 import Users from './Users/Users'
+import Contact from './Contact/Contact'
 
 class Admin extends Component{
     state = {
+        users: true, 
         products: false,
-        users: true
+        contact: false
     }
     swithToUserHandler = ()=> {
-        this.setState({products: false, users:true})
+        this.setState({products: false, users:true,contact:false})
     }
     switchToProductsHandler = () => {
-        this.setState({products: true, users:false})
+        this.setState({products: true, users:false, contact:false})
+    }
+    switchToContactHandler = () => {
+        this.setState({products:false, users: false, contact: true})
     }
     render(){
         let toDisplay
         let UsersClasses = ""
         let ProductClasses=""
+        let contactClasses = ""
         if(this.state.products){
             ProductClasses = "Active_Compo"
             toDisplay = <Products />
-       }else{
+       }else if(this.state.users){
            UsersClasses = "Active_Compo"
            toDisplay = <Users />
+       }else if(this.state.contact){
+            contactClasses = "Active_Compo"
+            toDisplay = <Contact />
        }
         return(
             <Aux>
@@ -38,6 +47,9 @@ class Admin extends Component{
                                 </section> 
                                 <section className={ProductClasses}>
                                     <p onClick={this.switchToProductsHandler}>Product Management</p>
+                                </section>
+                                <section className={contactClasses}>
+                                    <p onClick={this.switchToContactHandler}>Contact</p>
                                 </section>
                             </div>
                             <div className="Details">
