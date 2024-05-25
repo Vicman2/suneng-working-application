@@ -6,7 +6,7 @@ import './Team.css'
 import CEO from './Assets/CEO.jpg';
 import Founder from './Assets/Founder.jpg';
 import Media from './Assets/Media.jpg';
-import Maintenance from './Assets/Okwey.jpg'
+import Machinist from './Assets/machinist.jpg'
 import SunEngMarket from './Assets/SunEng Marketer.png'
 
 const team = (props) => {
@@ -71,10 +71,10 @@ const team = (props) => {
                             </div>
                         </section>
                         <section className="Mate">
-                            <img src={Maintenance} alt="Maintenance"/>
+                            <img src={Machinist} alt="Maintenance"/>
                             <div className="MateDetails">
-                                <p className="Mate__name">ENGR. NNADI JOSEPH O. </p>
-                                <p className="Mate__Position">Maintenance Officer</p>
+                                <p className="Mate__name">Excel Machiary</p>
+                                <p className="Mate__Position">Machinist</p>
                                 <div className="Socials">
                                     <ion-icon name="logo-facebook"></ion-icon>
                                     <ion-icon name="logo-twitter"></ion-icon>

@@ -37,6 +37,10 @@
 #ScrollDown{
     background: #000035;
 }
+.Logo img{
+    height: 40px;
+    width: 40px;
+}
 
 @media (min-width:800px){
     .Logo{

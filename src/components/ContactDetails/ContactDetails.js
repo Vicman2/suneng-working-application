@@ -9,8 +9,6 @@ const contactDetails = (props) => {
             <p className="We__Are__Here">We are here</p> 
             <p className="To__Serve">To serve you</p>
             
-            <p className="Section__Header">Address:</p>
-
             <p>HEAD OFFICE: </p>
             <p className="Contact__Value" data-aos="zoom-in-down">Amigbo lane opposite CIC shopping plaza uwani Enugu.</p>
             <p>BRANCH OFFICE:</p> 
@@ -23,6 +21,10 @@ const contactDetails = (props) => {
             <p className="Section__Header" data-aos="zoom-in-down">Email</p>
 
             <p className="Contact__Value" data-aos="zoom-in-down">sunengworksltd@gmail.com</p>
+
+            <p className="Section__Header" data-aos="zoom-in-down">CAC Reg No</p>
+
+            <p className="Contact__Value" data-aos="zoom-in-down">1347737</p>
         </Aux>
     )
 }

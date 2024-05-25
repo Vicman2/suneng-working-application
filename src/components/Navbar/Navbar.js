@@ -6,6 +6,7 @@ import AuthController from '../AuthController/AuthButton'
 import Harmburger from '../UI/Harmburger/Harmburger'
 import  './Navbar.css'
 import { withRouter } from 'react-router-dom';
+import Logo from './Assets/logo.jpg'
 
 const navbar = (props) => {
     let Auth = null
@@ -22,7 +23,9 @@ const navbar = (props) => {
         <Aux>
             <div className="Navbar" id={props.isTop? "" : "ScrollDown"}>
                 <Harmburger clicked={props.toToggle}/>
-                <div className="Logo">LOGO</div>
+                <div className="Logo">
+                    <img src={Logo} alt="Maintenance"/>
+                </div>
                 <NavItems />
                 {Auth}
             </div>
