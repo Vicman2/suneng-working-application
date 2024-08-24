@@ -8,6 +8,7 @@ import Founder from './Assets/Founder.jpg';
 import Media from './Assets/Media.jpg';
 import Machinist from './Assets/machinist.jpg'
 import SunEngMarket from './Assets/SunEng Marketer.png'
+import Solicitor from './Assets/Solicitor.jpg'
 
 const team = (props) => {
     const responsive = {
@@ -101,6 +102,19 @@ const team = (props) => {
                             <div className="MateDetails">
                                 <p className="Mate__name">CHRISTIAN NWAOKOH </p>
                                 <p className="Mate__Position">MARKETING MANAGER</p>
+                                <div className="Socials">
+                                    <ion-icon name="logo-facebook"></ion-icon>
+                                    <ion-icon name="logo-twitter"></ion-icon>
+                                    <ion-icon name="logo-instagram"></ion-icon>
+                                    <ion-icon name="logo-linkedin"></ion-icon>
+                                </div>
+                            </div>
+                        </section>
+                        <section className="Mate">
+                            <img src={Solicitor} alt=""/>
+                            <div className="MateDetails">
+                                <p className="Mate__name">KIRON DEBORAH </p>
+                                <p className="Mate__Position">COMPANY SOLICITOR</p>
                                 <div className="Socials">
                                     <ion-icon name="logo-facebook"></ion-icon>
                                     <ion-icon name="logo-twitter"></ion-icon>
